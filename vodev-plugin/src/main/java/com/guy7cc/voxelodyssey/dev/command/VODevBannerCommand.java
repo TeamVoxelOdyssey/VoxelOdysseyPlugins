@@ -32,6 +32,9 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
+/**
+ * A command that gives a player a banner.
+ */
 public class VODevBannerCommand implements CommandDescriptor {
     private final CommandComposition composition = new CommandComposition()
             .add(

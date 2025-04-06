@@ -24,6 +24,9 @@ import com.guy7cc.voxelodyssey.core.data.DataFormatException;
 import com.guy7cc.voxelodyssey.core.property.AbstractProperty;
 import com.guy7cc.voxelodyssey.core.registry.Key;
 
+/**
+ * A property for the {@link VOElementalVector} class.
+ */
 public class VOElementalVectorProperty extends AbstractProperty<VOElementalVector> {
     public VOElementalVectorProperty(Key key, VOElementalVector defaultValue) {
         super(key, defaultValue);

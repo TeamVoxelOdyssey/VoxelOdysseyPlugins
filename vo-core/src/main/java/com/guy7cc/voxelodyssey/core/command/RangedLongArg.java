@@ -23,6 +23,9 @@ import org.jetbrains.annotations.Nullable;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Represents a ranged long command argument.
+ */
 public class RangedLongArg implements CommandArg<Long> {
     private final String name;
     private final long min;

@@ -24,6 +24,13 @@ import com.guy7cc.voxelodyssey.core.common.Copyable;
 import java.util.function.Function;
 import java.util.logging.Level;
 
+/**
+ * ImmutableValueHolder is a generic class that holds a value of type T.
+ * It provides a method to create an instance of the class and a method to
+ * pass a function to modify the value.
+ *
+ * @param <T> the type of the value held by this class
+ */
 public class ImmutableValueHolder<T> implements Copyable<ImmutableValueHolder<T>> {
     public T value;
 
@@ -46,10 +53,22 @@ public class ImmutableValueHolder<T> implements Copyable<ImmutableValueHolder<T>
         return null;
     }
 
+    /**
+     * Creates an instance of ImmutableValueHolder with the specified value.
+     *
+     * @param value the value to be held
+     * @param <U>   the type of the value
+     * @return an instance of ImmutableValueHolder holding the specified value
+     */
     public static <U> ImmutableValueHolder<U> of(U value) {
         return new ImmutableValueHolder<>(value);
     }
 
+    /**
+     * Applies the specified function to the value held by this instance.
+     *
+     * @param func the function to be applied
+     */
     public void pass(Function<T, T> func) {
         value = func.apply(value);
     }

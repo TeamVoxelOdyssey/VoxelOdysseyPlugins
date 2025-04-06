@@ -22,6 +22,10 @@ import org.bukkit.util.Vector;
 
 import java.util.Objects;
 
+/**
+ * Axis-Aligned Bounding Box (AABB) class representing a 3D box defined by two opposite corners.
+ * Implements the RegionShape interface.
+ */
 public final class AABB implements RegionShape {
     private final Vector min;
     private final Vector max;

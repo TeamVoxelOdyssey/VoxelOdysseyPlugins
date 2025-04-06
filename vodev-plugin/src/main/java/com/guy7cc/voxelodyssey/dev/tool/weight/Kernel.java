@@ -18,6 +18,10 @@
  */
 package com.guy7cc.voxelodyssey.dev.tool.weight;
 
+/**
+ * A kernel interface for use in terrain management.
+ * @param <T> the type of the kernel
+ */
 public interface Kernel<T> {
     T get(int i, int j);
 

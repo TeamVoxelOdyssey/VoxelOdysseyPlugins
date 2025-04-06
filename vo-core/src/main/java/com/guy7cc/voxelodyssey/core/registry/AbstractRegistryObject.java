@@ -18,6 +18,11 @@
  */
 package com.guy7cc.voxelodyssey.core.registry;
 
+/**
+ * Abstract class representing a registry object.
+ * This class implements the RegistryObject interface and provides a common
+ * implementation for the key property.
+ */
 public abstract class AbstractRegistryObject implements RegistryObject {
     private final Key key;
 

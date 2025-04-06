@@ -18,6 +18,11 @@
  */
 package com.guy7cc.voxelodyssey.core.common;
 
+/**
+ * Represents a wrapper for an object of type T.
+ *
+ * @param <T> the type of the object being wrapped
+ */
 public interface Wrapper<T> {
     T getHandle();
 }

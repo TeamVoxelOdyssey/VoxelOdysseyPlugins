@@ -21,6 +21,10 @@ package com.guy7cc.voxelodyssey.core;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
+/**
+ * Main class for the VoxelOdysseyCore plugin.
+ * This is the entry point for the plugin and handles the lifecycle events.
+ */
 public final class VOCorePlugin extends JavaPlugin {
     private static VOCorePlugin plugin;
 

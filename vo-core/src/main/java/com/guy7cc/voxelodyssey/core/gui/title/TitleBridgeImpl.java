@@ -24,6 +24,10 @@ import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 
+/**
+ * Implementation of the TitleBridge interface.
+ * This class manages the title components for a player.
+ */
 public class TitleBridgeImpl implements TitleBridge {
     private final Player player;
     private final Set<TitleComponent> components = new HashSet<>();

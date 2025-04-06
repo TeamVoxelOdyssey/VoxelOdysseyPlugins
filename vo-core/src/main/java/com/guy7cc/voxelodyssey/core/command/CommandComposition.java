@@ -28,9 +28,20 @@ import org.jetbrains.annotations.Nullable;
 import java.util.*;
 import java.util.function.BiFunction;
 
+/**
+ * CommandComposition is a class that allows you to compose multiple command arguments and their corresponding
+ * executors into a single command. It implements the CommandExecutor and TabCompleter interfaces.
+ */
 public class CommandComposition implements CommandExecutor, TabCompleter {
     private final List<Composition> compositions = new ArrayList<>();
 
+    /**
+     * Adds a new command composition to the list.
+     *
+     * @param executor The executor function that will be called when the command is executed.
+     * @param args     The command arguments that will be used to match the command.
+     * @return The current instance of CommandComposition for method chaining.
+     */
     public CommandComposition add(BiFunction<NamedArgs, CommandSender, Boolean> executor, CommandArg<?>... args) {
         compositions.add(new Composition(executor, Arrays.stream(args).toList()));
         return this;
@@ -76,6 +87,10 @@ public class CommandComposition implements CommandExecutor, TabCompleter {
         }
     }
 
+    /**
+     * Composition is a class that represents a single command composition.
+     * It contains the executor function and the list of command arguments.
+     */
     protected static class Composition {
         public final BiFunction<NamedArgs, CommandSender, Boolean> executor;
         public final List<CommandArg<?>> args;
@@ -85,6 +100,12 @@ public class CommandComposition implements CommandExecutor, TabCompleter {
             this.args = args;
         }
 
+        /**
+         * Checks if the given arguments match the command arguments.
+         *
+         * @param args The arguments to check.
+         * @return True if the arguments match, false otherwise.
+         */
         public boolean matches(String[] args) {
             if (this.args.size() != args.length) return false;
             for (int i = 0; i < args.length; i++) {
@@ -93,6 +114,12 @@ public class CommandComposition implements CommandExecutor, TabCompleter {
             return true;
         }
 
+        /**
+         * Gets the tab completion for the given arguments.
+         *
+         * @param args The arguments to get the tab completion for.
+         * @return The list of possible completions.
+         */
         public List<String> onTabComplete(String[] args) {
             if (this.args.size() < args.length) return List.of();
             for (int i = 0; i < args.length - 1; i++) {

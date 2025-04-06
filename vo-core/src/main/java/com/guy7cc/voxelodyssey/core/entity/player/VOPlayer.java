@@ -23,7 +23,15 @@ import com.guy7cc.voxelodyssey.core.entity.VOEntity;
 import com.guy7cc.voxelodyssey.core.entity.VOEntityFactoryArgs;
 import org.bukkit.entity.Player;
 
+/**
+ * Represents a player in the VoxelOdyssey game.
+ * This interface extends VOEntity and JsonSerializable to provide additional functionality.
+ */
 public interface VOPlayer extends VOEntity<Player>, JsonSerializable<VOPlayer> {
+    /**
+     * Represents the arguments used to create a VOPlayer instance.
+     * This class extends VOEntityFactoryArgs but includes no additional arguments.
+     */
     class FactoryArgs extends VOEntityFactoryArgs {
 
     }

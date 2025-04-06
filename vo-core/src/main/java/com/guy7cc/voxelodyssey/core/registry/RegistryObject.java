@@ -18,6 +18,9 @@
  */
 package com.guy7cc.voxelodyssey.core.registry;
 
+/**
+ * Interface representing a registry object.
+ */
 public interface RegistryObject extends Keyed {
 
 }

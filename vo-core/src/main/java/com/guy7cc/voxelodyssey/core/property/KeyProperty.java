@@ -23,6 +23,11 @@ import com.google.gson.JsonPrimitive;
 import com.guy7cc.voxelodyssey.core.data.DataFormatException;
 import com.guy7cc.voxelodyssey.core.registry.Key;
 
+/**
+ * A property that represents a Key.
+ * It extends the AbstractProperty class and provides methods to parse JSON elements
+ * and convert them to Key objects, as well as to convert Key objects to JSON elements.
+ */
 public class KeyProperty extends AbstractProperty<Key> {
     public KeyProperty(Key key, Key defaultValue) {
         super(key, defaultValue);

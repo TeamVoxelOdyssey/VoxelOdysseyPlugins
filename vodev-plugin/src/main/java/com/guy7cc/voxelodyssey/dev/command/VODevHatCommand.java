@@ -28,6 +28,9 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
+/**
+ * A command that swaps the player's helmet with the item in their main hand.
+ */
 public class VODevHatCommand implements CommandDescriptor {
     @Override
     public String getName() {

@@ -21,6 +21,10 @@ package com.guy7cc.voxelodyssey.core.item;
 import com.guy7cc.voxelodyssey.core.VOCorePlugin;
 import com.guy7cc.voxelodyssey.core.registry.Registry;
 
+/**
+ * This class is responsible for managing the core items in the VoxelOdyssey game.
+ * It provides a registry for VOItem objects and a method to register new items.
+ */
 public class VOCoreItems {
     public static final Registry<VOItem> REGISTRY;
 

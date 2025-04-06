@@ -35,6 +35,12 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+/**
+ * A tool that generates terrain using a specified preset of block types.
+ * <p>
+ * This tool uses WorldEdit to generate terrain around the specified location.
+ * </p>
+ */
 public class Terrain extends Tool {
     private int size;
     private List<BlockType> preset;

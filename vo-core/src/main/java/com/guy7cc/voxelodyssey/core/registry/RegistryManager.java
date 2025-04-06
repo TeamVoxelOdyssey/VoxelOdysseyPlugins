@@ -28,6 +28,10 @@ import org.bukkit.plugin.java.JavaPlugin;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * RegistryManager is responsible for managing and registering different types of registries.
+ * It allows adding and retrieving registries based on their type.
+ */
 public class RegistryManager implements PluginLifecycleListener {
     private final JavaPlugin plugin;
     private final Map<RegistryType<?>, Registry<?>> registries = new HashMap<>(16);

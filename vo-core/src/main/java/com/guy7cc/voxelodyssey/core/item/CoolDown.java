@@ -39,6 +39,11 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
+/**
+ * CoolDown class manages the cooldowns for items in a game.
+ * It implements Tickable and JsonSerializable interfaces.
+ * The class provides methods to use items, check availability, and manage cooldowns.
+ */
 public class CoolDown implements Tickable, JsonSerializable<CoolDown> {
     private int lastTick = 0;
     private final Map<Key, Integer> keyToTime = new HashMap<>();
@@ -54,20 +59,44 @@ public class CoolDown implements Tickable, JsonSerializable<CoolDown> {
         remove(globalTick);
     }
 
+    /**
+     * Use an item and set its cooldown.
+     *
+     * @param itemStack the item to use
+     * @param cooldown  the cooldown time in ticks
+     */
     public void useItem(ItemStack itemStack, int cooldown) {
         remove(itemStack);
         put(itemStack, lastTick + cooldown);
     }
 
+    /**
+     * Check if the item is available.
+     *
+     * @param itemStack the item to check
+     * @return true if the item is available, false otherwise
+     */
     public boolean available(ItemStack itemStack){
         return !contains(itemStack) || get(itemStack) >= lastTick;
     }
 
+    /**
+     * Check if the player should receive a message.
+     *
+     * @param player the player to check
+     * @return true if the player should receive a message, false otherwise
+     */
     public boolean shouldSendMessage(@NotNull Player player){
         ItemStack itemStack = player.getInventory().getItemInMainHand();
         return contains(itemStack);
     }
 
+    /**
+     * Get the cooldown message for the action bar.
+     *
+     * @param player the player to get the message for
+     * @return the cooldown message
+     */
     @Nullable
     public Component getPaperComponentForActionBar(@NotNull Player player){
         ItemStack itemStack = player.getInventory().getItemInMainHand();
@@ -95,6 +124,12 @@ public class CoolDown implements Tickable, JsonSerializable<CoolDown> {
         return timeToKey.containsKey(time);
     }
 
+    /**
+     * Get the cooldown time for the item.
+     *
+     * @param itemStack the item to get the cooldown for
+     * @return the cooldown time in ticks
+     */
     public int get(ItemStack itemStack) {
         VOItemStackWrapper state = new VOItemStackWrapper(itemStack);
         Key key = state.getCoolDownKey();

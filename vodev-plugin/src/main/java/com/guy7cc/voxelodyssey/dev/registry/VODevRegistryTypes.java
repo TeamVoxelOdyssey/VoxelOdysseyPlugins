@@ -23,6 +23,12 @@ import com.guy7cc.voxelodyssey.core.registry.Key;
 import com.guy7cc.voxelodyssey.core.registry.RegistryType;
 import com.guy7cc.voxelodyssey.dev.banner.BannerFactory;
 
+/**
+ * A class that holds all the registry types in the developer tools.
+ * <p>
+ * This class is used to register and retrieve registry types.
+ * </p>
+ */
 public class VODevRegistryTypes {
     public static final RegistryType<BannerFactory> BANNER = new RegistryType<>(Key.vo("banner"));
 }

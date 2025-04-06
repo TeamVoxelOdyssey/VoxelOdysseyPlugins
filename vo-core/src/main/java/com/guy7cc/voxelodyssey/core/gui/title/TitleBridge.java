@@ -25,6 +25,10 @@ import org.bukkit.entity.Player;
 
 import java.util.Collection;
 
+/**
+ * Interface for managing title components for a player.
+ * This interface extends Tickable to allow for periodic updates.
+ */
 public interface TitleBridge extends Tickable {
     @Override
     default void tick(int globalTick) {
@@ -42,13 +46,38 @@ public interface TitleBridge extends Tickable {
         return getComponents();
     }
 
+    /**
+     * Gets the player associated with this TitleBridge.
+     *
+     * @return the player
+     */
     Player getPlayer();
 
+    /**
+     * Gets the collection of title components.
+     *
+     * @return the collection of title components
+     */
     Collection<TitleComponent> getComponents();
 
+    /**
+     * Adds a title component to the collection.
+     *
+     * @param component the title component to add
+     */
     void addComponent(TitleComponent component);
 
+    /**
+     * Removes a title component from the collection.
+     *
+     * @param component the title component to remove
+     */
     void removeComponent(TitleComponent component);
 
+    /**
+     * Sets the visibility status of the title.
+     *
+     * @param visible true to make the title visible, false to hide it
+     */
     void setVisible(boolean visible);
 }

@@ -29,6 +29,11 @@ import org.bukkit.NamespacedKey;
 import java.util.Objects;
 import java.util.logging.Level;
 
+/**
+ * Represents a key used for various purposes in the VoxelOdyssey framework.
+ * This class provides methods to create keys, convert them to and from strings,
+ * and serialize them to JSON.
+ */
 public final class Key implements Copyable<Key>, JsonSerializable<Key> {
     private static final NamespacedKey DEFAULT = new NamespacedKey(VoxelOdysseyCore.NAMESPACE, "default");
 

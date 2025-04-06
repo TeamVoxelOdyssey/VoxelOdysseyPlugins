@@ -26,6 +26,10 @@ import org.bukkit.NamespacedKey;
 
 import java.util.UUID;
 
+/**
+ * A property that represents a UUID.
+ * It implements the Property interface and provides methods to parse and format UUID values.
+ */
 public class UuidProperty implements Property<UUID> {
     private final Key key;
 

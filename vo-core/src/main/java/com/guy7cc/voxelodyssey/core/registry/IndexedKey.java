@@ -25,6 +25,11 @@ import com.guy7cc.voxelodyssey.core.data.DataFormatException;
 
 import java.util.Objects;
 
+/**
+ * Represents a key with an associated index.
+ * This class is used to identify specific items or slots in a registry.
+ * It implements the JsonSerializable interface for JSON serialization and deserialization.
+ */
 public class IndexedKey implements JsonSerializable<IndexedKey> {
     public static final Key KEY_INVENTORY = Key.vo("inventory");
     public static final Key KEY_ITEM = Key.vo("item");

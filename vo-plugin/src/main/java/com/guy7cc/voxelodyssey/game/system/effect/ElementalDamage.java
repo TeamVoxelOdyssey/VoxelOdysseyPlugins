@@ -26,6 +26,10 @@ import com.guy7cc.voxelodyssey.game.system.VOElementalVector;
 
 import java.util.Optional;
 
+/**
+ * ElementalDamage class that extends VOEffect.
+ * This class is responsible for handling elemental damage effects in the game.
+ */
 public class ElementalDamage extends VOEffect<VOElementalVector> {
     public ElementalDamage(Key key) {
         super(key);

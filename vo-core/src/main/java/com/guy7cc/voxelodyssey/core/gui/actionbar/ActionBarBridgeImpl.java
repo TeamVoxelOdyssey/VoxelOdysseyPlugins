@@ -23,6 +23,10 @@ import org.bukkit.entity.Player;
 import java.util.SortedSet;
 import java.util.TreeSet;
 
+/**
+ * Implementation of the ActionBarBridge interface.
+ * This class manages the action bar components for a player.
+ */
 public class ActionBarBridgeImpl implements ActionBarBridge {
     private final Player player;
     private final SortedSet<ActionBarComponent> components = new TreeSet<>();

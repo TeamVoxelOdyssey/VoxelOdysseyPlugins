@@ -26,6 +26,10 @@ import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.UUID;
 
+/**
+ * A custom Gson TypeAdapter for serializing and deserializing UUIDs.
+ * This adapter handles the conversion of UUIDs to and from their string representation.
+ */
 public class UuidAdapter extends TypeAdapter<UUID> {
     @Override
     public void write(JsonWriter out, UUID value) throws IOException {

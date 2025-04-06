@@ -22,6 +22,9 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
+/**
+ * Represents a ranged double command argument.
+ */
 public class RangedDoubleArg implements CommandArg<Double> {
     private final String name;
     private final double min;

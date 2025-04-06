@@ -18,6 +18,11 @@
  */
 package com.guy7cc.voxelodyssey.core.common;
 
+/**
+ * Represents a wrapper for an object of type T.
+ *
+ * @param <T> the type of the object being wrapped
+ */
 public class AbstractWrapper<T> implements Wrapper<T> {
     protected T handle;
 
@@ -29,6 +34,11 @@ public class AbstractWrapper<T> implements Wrapper<T> {
         this.handle = handle;
     }
 
+    /**
+     * Gets the wrapped object.
+     *
+     * @return the wrapped object
+     */
     @Override
     public T getHandle() {
         return handle;

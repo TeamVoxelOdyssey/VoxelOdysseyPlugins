@@ -24,6 +24,12 @@ import com.guy7cc.voxelodyssey.core.registry.Key;
 
 import java.util.Optional;
 
+/**
+ * A class that represents a damage effect in the game.
+ * <p>
+ * This class is used to apply damage effects to entities.
+ * </p>
+ */
 public class Damage extends VOEffect<ImmutableValueHolder<Double>> {
     public Damage(Key key) {
         super(key);

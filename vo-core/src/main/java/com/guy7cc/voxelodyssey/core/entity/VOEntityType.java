@@ -22,12 +22,32 @@ import com.guy7cc.voxelodyssey.core.registry.AbstractRegistryObject;
 import com.guy7cc.voxelodyssey.core.registry.Key;
 import org.bukkit.entity.Entity;
 
+/**
+ * Represents a type of entity in VoxelOdyssey game.
+ * This class is responsible for creating and wrapping entities of a specific type.
+ *
+ * @param <T> the type of entity
+ * @param <S> the type of arguments used to create the entity
+ */
 public abstract class VOEntityType<T extends VOEntity<?>, S extends VOEntityFactoryArgs> extends AbstractRegistryObject {
     public VOEntityType(Key key) {
         super(key);
     }
 
+    /**
+     * Creates a new entity of this type with the specified arguments.
+     *
+     * @param args the arguments used to create the entity
+     * @return the created entity
+     */
     public abstract T create(S args);
 
+    /**
+     * Wraps an existing entity of this type with the specified arguments.
+     *
+     * @param entity the existing entity to wrap
+     * @param args   the arguments used to wrap the entity
+     * @return the wrapped entity
+     */
     public abstract T wrap(Entity entity, S args);
 }

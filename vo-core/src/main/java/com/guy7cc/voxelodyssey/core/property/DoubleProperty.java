@@ -23,6 +23,11 @@ import com.google.gson.JsonPrimitive;
 import com.guy7cc.voxelodyssey.core.data.DataFormatException;
 import com.guy7cc.voxelodyssey.core.registry.Key;
 
+/**
+ * Represents a property that holds a Double value.
+ * This class extends AbstractProperty and provides methods to parse JSON elements
+ * and convert them to Double values.
+ */
 public class DoubleProperty extends AbstractProperty<Double> {
     public DoubleProperty(Key key, Double defaultValue) {
         super(key, defaultValue);

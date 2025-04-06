@@ -50,11 +50,21 @@ import java.util.List;
 import java.util.UUID;
 import java.util.logging.Level;
 
+/**
+ * Wrapper class for ItemStack that provides additional functionality
+ * specific to VoxelOdyssey items.
+ */
 public class VOItemStackWrapper extends AbstractWrapper<ItemStack> implements State<VOItem, VOItemStackWrapper> {
     protected VOItemStackWrapper(ItemStack itemStack) {
         super(itemStack);
     }
 
+    /**
+     * Creates a new VOItemStackWrapper instance from an ItemStack.
+     *
+     * @param itemStack the ItemStack to wrap
+     * @return a new VOItemStackWrapper instance
+     */
     public static VOItemStackWrapper of(ItemStack itemStack) {
         return new VOItemStackWrapper(itemStack);
     }
@@ -65,14 +75,28 @@ public class VOItemStackWrapper extends AbstractWrapper<ItemStack> implements St
         return VOCoreItems.REGISTRY.get(itemKey);
     }
 
+    /**
+     * Sets the owner of this item stack to the specified VOItem.
+     *
+     * @param item the VOItem to set as the owner
+     */
     public void setOwner(VOItem item) {
         setProperty(VOCoreProperties.OWNER, item.getKey());
     }
 
+    /**
+     * Checks if this item stack is a VOItem.
+     *
+     * @return true if this item stack is a VOItem, false otherwise
+     */
     public boolean isVOItem() {
         return getOwner() != null;
     }
 
+    /**
+     * Updates the name of this item stack based on its properties.
+     * This includes setting the custom name and use count.
+     */
     public void updateName() {
         TranslatableComponent name = Component
                 .translatable(TranslationUtil.itemKey(getProperty(VOCoreProperties.OWNER)))
@@ -94,11 +118,22 @@ public class VOItemStackWrapper extends AbstractWrapper<ItemStack> implements St
         rawItemStack.set(DataComponents.CUSTOM_NAME, rawName);
     }
 
+    /**
+     * Sets the lore of this item stack based on its properties.
+     * This includes setting the lore lines and usage.
+     */
     public void setItemLore() {
         VOItem item = getOwner();
         setItemLore(item.getKey(), item.loreLineNum, item.usage);
     }
 
+    /**
+     * Sets the lore of this item stack based on the specified parameters.
+     *
+     * @param loreKey the key for the lore
+     * @param lineNum the number of lore lines
+     * @param usage   the usage of the item
+     */
     public void setItemLore(Key loreKey, int lineNum, VOItemUsage usage) {
         List<net.minecraft.network.chat.Component> loreComponents = new ArrayList<>();
         for (int i = 0; i < lineNum; i++) {
@@ -122,19 +157,33 @@ public class VOItemStackWrapper extends AbstractWrapper<ItemStack> implements St
         rawItemStack.set(DataComponents.LORE, new ItemLore(loreComponents));
     }
 
+    /**
+     * Sets the model of this item stack to the model of its owner.
+     */
     public void setModel() {
         setModel(getOwner().getKey());
     }
 
+    /**
+     * Sets the model of this item stack to the specified model key.
+     *
+     * @param modelKey the key for the model
+     */
     public void setModel(Key modelKey) {
         var rawItemStack = getRaw();
         rawItemStack.set(DataComponents.ITEM_MODEL, ResourceLocation.fromNamespaceAndPath(modelKey.namespace(), modelKey.key()));
     }
 
+    /**
+     * Sets the unique identifier for this item stack.
+     */
     public void setUnique() {
         setProperty(VOCoreProperties.UNIQUE, UUID.randomUUID());
     }
 
+    /**
+     * Decreases the use count of this item stack.
+     */
     public void decreaseUseCount() {
         if (!containsProperty(VOCoreProperties.USE)) return;
         int use = getProperty(VOCoreProperties.USE);
@@ -142,11 +191,23 @@ public class VOItemStackWrapper extends AbstractWrapper<ItemStack> implements St
         updateName();
     }
 
+    /**
+     * Gets the cooldown key for this item stack.
+     * If the cooldown key is not set, it returns the owner key.
+     *
+     * @return the cooldown key
+     */
     public Key getCoolDownKey() {
         if (containsProperty(VOCoreProperties.COOLTIME_KEY)) return getProperty(VOCoreProperties.COOLTIME_KEY);
         else return getProperty(VOCoreProperties.OWNER);
     }
 
+    /**
+     * Sets the cooldown key for this item stack.
+     *
+     * @param player the player using the item
+     * @param itemStack the item stack being used
+     */
     public void setCooltime(Player player, ItemStack itemStack) {
         if (!containsProperty(VOCoreProperties.COOLTIME)) return;
         VOPlayer voplayer = VoxelOdysseyCore.getVOPlayer(player);

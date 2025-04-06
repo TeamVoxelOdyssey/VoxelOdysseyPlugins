@@ -25,6 +25,9 @@ import com.guy7cc.voxelodyssey.core.data.JsonSerializable;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 
+/**
+ * A class that represents a landmark in the world.
+ */
 public class Landmark implements JsonSerializable<Landmark> {
     private String world;
     private double x;
@@ -46,10 +49,21 @@ public class Landmark implements JsonSerializable<Landmark> {
         this.pitch = pitch;
     }
 
+    /**
+     * Creates a landmark from a location.
+     *
+     * @param loc the location to create the landmark from
+     * @return the landmark
+     */
     public static Landmark fromLocation(Location loc){
         return new Landmark(loc.getWorld().getName(), loc.getX(), loc.getY(), loc.getZ(), loc.getYaw(), loc.getPitch());
     }
 
+    /**
+     * Converts this landmark to a location.
+     *
+     * @return the location
+     */
     public Location toLocation(){
         return new Location(Bukkit.getWorld(world), x, y, z, yaw, pitch);
     }

@@ -37,6 +37,12 @@ import org.bukkit.util.Vector;
 import java.util.Comparator;
 import java.util.Map;
 
+/**
+ * A tool that smooths the terrain around a specified location.
+ * <p>
+ * This tool uses WorldEdit to smooth the terrain around the specified location.
+ * </p>
+ */
 public class Smooth extends Tool {
     private int size;
     private Kernel<Float> kernel;

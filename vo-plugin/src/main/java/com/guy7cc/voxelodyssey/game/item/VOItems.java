@@ -21,6 +21,9 @@ package com.guy7cc.voxelodyssey.game.item;
 import com.guy7cc.voxelodyssey.core.item.VOCoreItems;
 import com.guy7cc.voxelodyssey.core.item.VOItem;
 
+/**
+ * A class that holds all the items in VoxelOdyssey.
+ */
 public class VOItems {
 
     private VOItems() {

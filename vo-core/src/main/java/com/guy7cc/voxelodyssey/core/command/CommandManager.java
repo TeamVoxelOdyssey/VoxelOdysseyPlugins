@@ -23,6 +23,10 @@ import com.guy7cc.voxelodyssey.core.common.PluginLifecycleListener;
 import org.bukkit.command.PluginCommand;
 import org.bukkit.plugin.java.JavaPlugin;
 
+/**
+ * CommandManager is responsible for registering command handlers and setting up command tab completion.
+ * It implements PluginLifecycleListener to handle plugin lifecycle events.
+ */
 public class CommandManager implements PluginLifecycleListener {
     private final JavaPlugin plugin;
     private final CommandDescriptor[] handlers;

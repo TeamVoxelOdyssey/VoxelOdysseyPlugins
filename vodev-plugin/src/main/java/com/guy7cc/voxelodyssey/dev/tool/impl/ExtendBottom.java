@@ -33,6 +33,12 @@ import org.bukkit.entity.Player;
 
 import java.util.Set;
 
+/**
+ * A tool that extends the bottom of a specified area to a certain height.
+ * <p>
+ * This tool uses WorldEdit to extend the bottom of the specified area to the specified height.
+ * </p>
+ */
 public class ExtendBottom extends Tool {
     private int size;
     private int bottom;

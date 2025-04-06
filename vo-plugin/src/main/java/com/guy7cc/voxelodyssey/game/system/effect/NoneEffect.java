@@ -25,6 +25,10 @@ import com.guy7cc.voxelodyssey.game.VOPlugin;
 import java.util.Optional;
 import java.util.logging.Level;
 
+/**
+ * A class representing a "none" effect in the VoxelOdyssey game.
+ * This effect clears all other effects and modifiers when applied.
+ */
 public class NoneEffect extends VOEffect<NoneEffect.None> {
     public NoneEffect() {
         super(Key.vo("none"));

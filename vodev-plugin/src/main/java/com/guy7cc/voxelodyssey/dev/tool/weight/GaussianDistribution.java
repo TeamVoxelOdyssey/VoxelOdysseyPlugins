@@ -18,6 +18,9 @@
  */
 package com.guy7cc.voxelodyssey.dev.tool.weight;
 
+/**
+ * A Gaussian distribution kernel for use in terrain smoothing.
+ */
 public class GaussianDistribution implements Kernel<Float> {
     private final int size;
     private final int diameter;

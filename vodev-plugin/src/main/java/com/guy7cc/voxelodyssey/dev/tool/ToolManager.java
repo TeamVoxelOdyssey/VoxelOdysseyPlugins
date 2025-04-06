@@ -31,6 +31,12 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
+/**
+ * A class that manages tools for players.
+ * <p>
+ * This class is used to set and get tools for players.
+ * </p>
+ */
 public class ToolManager implements Listener {
     private final Map<UUID, Map<Material, Tool>> map = new HashMap<>();
 

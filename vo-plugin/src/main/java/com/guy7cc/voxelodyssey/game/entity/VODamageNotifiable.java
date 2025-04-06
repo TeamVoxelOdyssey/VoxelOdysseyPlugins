@@ -23,6 +23,10 @@ import com.guy7cc.voxelodyssey.game.system.VOElement;
 import com.guy7cc.voxelodyssey.game.system.VOElementalVector;
 import org.bukkit.entity.LivingEntity;
 
+/**
+ * An interface for entities that can notify damage.
+ * @param <T> the type of the entity
+ */
 public interface VODamageNotifiable<T extends LivingEntity> extends VODamageable<T> {
     default void notifyDamage(VOElementalVector v){
         for (VOElement element : VOElement.values()) {

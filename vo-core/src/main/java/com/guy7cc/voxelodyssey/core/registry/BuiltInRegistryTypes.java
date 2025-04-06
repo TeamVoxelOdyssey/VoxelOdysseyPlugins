@@ -22,6 +22,9 @@ import com.guy7cc.voxelodyssey.core.entity.VOEntityType;
 import com.guy7cc.voxelodyssey.core.item.VOItem;
 import com.guy7cc.voxelodyssey.core.property.Property;
 
+/**
+ * This class contains built-in registry types for the VoxelOdyssey game.
+ */
 public class BuiltInRegistryTypes {
     public static final RegistryType<VOEntityType<?, ?>> ENTITY_TYPE = new RegistryType<>(Key.vo("entity_type"));
     public static final RegistryType<VOItem> ITEM = new RegistryType<>(Key.vo("item"));

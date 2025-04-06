@@ -25,6 +25,12 @@ import com.guy7cc.voxelodyssey.core.util.TranslationUtil;
 import com.guy7cc.voxelodyssey.game.VOPlugin;
 import net.kyori.adventure.text.Component;
 
+/**
+ * A class that holds all the effects in the game.
+ * <p>
+ *     This class is used to register and retrieve effects.
+ * </p>
+ */
 public class VOEffects {
     public static final Registry<VOEffect<?>> REGISTRY = new Registry<>(VOPlugin::getPlugin);
     public static final NoneEffect NONE = register(new NoneEffect());

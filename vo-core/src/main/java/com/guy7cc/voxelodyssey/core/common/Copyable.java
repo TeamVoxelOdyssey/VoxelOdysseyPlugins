@@ -18,6 +18,12 @@
  */
 package com.guy7cc.voxelodyssey.core.common;
 
+/**
+ * Represents an object that can be copied.
+ * This interface extends the Cloneable interface and provides a method to clone the object.
+ *
+ * @param <T> the type of the object being copied
+ */
 public interface Copyable<T> extends Cloneable {
     T clone();
 }

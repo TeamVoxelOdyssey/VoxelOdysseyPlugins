@@ -26,6 +26,10 @@ import java.util.Collection;
 import java.util.List;
 import java.util.logging.Level;
 
+/**
+ * GeneralTicker is a class that manages a list of Tickable objects and provides a method to tick them.
+ * It also collects Tickable objects from fields and static fields of a given object or class.
+ */
 public class GeneralTicker {
     private final JavaPlugin plugin;
     private int globalTick = 0;
@@ -35,24 +39,48 @@ public class GeneralTicker {
         this.plugin = plugin;
     }
 
+    /**
+     * Registers a single Tickable object.
+     *
+     * @param tickable the Tickable object to register
+     */
     public void add(Tickable tickable){
         list.add(tickable);
     }
 
+    /**
+     * Registers a collection of Tickable objects.
+     *
+     * @param tickables the collection of Tickable objects to register
+     */
     public void add(Collection<Tickable> tickables){
         tickables.forEach(this::add);
     }
 
+    /**
+     * Collects Tickable objects from the fields of a given object and registers them.
+     *
+     * @param obj the object to collect Tickable objects from
+     */
     public void collect(Object obj){
         java.util.List<Object> list = ReflectionUtil.collectFields(obj, o -> o instanceof Tickable, plugin.getLogger());
         add(list.stream().map(o -> (Tickable) o).toList());
     }
 
+    /**
+     * Collects static Tickable objects from the fields of a given class and registers them.
+     *
+     * @param clazz the class to collect static Tickable objects from
+     */
     public void collectStatic(Class<?> clazz){
         java.util.List<Object> list = ReflectionUtil.collectStaticFields(clazz, o -> o instanceof Tickable, plugin.getLogger());
         add(list.stream().map(o -> (Tickable) o).toList());
     }
 
+    /**
+     * Ticks all registered Tickable objects.
+     * This method should be called periodically to update the state of the Tickable objects.
+     */
     public void tick() {
         for (Tickable tickable : list) {
             try{
@@ -68,6 +96,11 @@ public class GeneralTicker {
         ++globalTick;
     }
 
+    /**
+     * Returns the current global tick count.
+     *
+     * @return the current global tick count
+     */
     public int getGlobalTick() {
         return globalTick;
     }

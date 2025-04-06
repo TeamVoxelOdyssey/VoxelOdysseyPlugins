@@ -31,7 +31,20 @@ import org.bukkit.event.entity.EntityRegainHealthEvent;
 
 import java.util.Map;
 
+/**
+ * An interface for entities that can apply effects.
+ * <p>
+ * This interface is used to create entities that can apply effects in the game.
+ * </p>
+ *
+ * @param <T> the type of the entity
+ */
 public interface VOEffectApplicable<T extends LivingEntity> extends VODamageable<T> {
+    /**
+     * Gets the effect router for this entity.
+     *
+     * @return the effect router for this entity
+     */
     VOEffectRouter getEffectRouter();
 
     @EventHandler

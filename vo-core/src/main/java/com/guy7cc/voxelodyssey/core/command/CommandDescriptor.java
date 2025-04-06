@@ -21,6 +21,9 @@ package com.guy7cc.voxelodyssey.core.command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.TabCompleter;
 
+/**
+ * Represents a command descriptor that combines a command executor and a tab completer and returns the command name.
+ */
 public interface CommandDescriptor extends CommandExecutor, TabCompleter {
     String getName();
 }

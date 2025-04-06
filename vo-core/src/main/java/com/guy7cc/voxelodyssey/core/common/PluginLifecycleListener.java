@@ -21,15 +21,37 @@ package com.guy7cc.voxelodyssey.core.common;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * Interface for listening to plugin lifecycle events.
+ * <p>
+ * This interface provides methods that can be implemented to handle plugin lifecycle events such as enabling,
+ * disabling, and the first tick of the plugin.
+ * </p>
+ */
 public interface PluginLifecycleListener {
+    /**
+     * Called when the plugin is enabled.
+     *
+     * @param plugin the JavaPlugin instance
+     */
     default void onPluginEnabled(JavaPlugin plugin) {
 
     }
 
+    /**
+     * Called on the first tick of the plugin.
+     *
+     * @param plugin the JavaPlugin instance
+     */
     default void onFirstTick(JavaPlugin plugin) {
 
     }
 
+    /**
+     * Called when the plugin is disabled.
+     *
+     * @param plugin the JavaPlugin instance
+     */
     default void onPluginDisabled(JavaPlugin plugin) {
 
     }

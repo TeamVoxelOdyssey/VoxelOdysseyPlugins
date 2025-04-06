@@ -18,6 +18,9 @@
  */
 package com.guy7cc.voxelodyssey.dev.tool.weight;
 
+/**
+ * A height map kernel for use in terrain management.
+ */
 public class HeightMap extends KernelImpl<Float> {
     public HeightMap(int size) {
         super(size, 0f);

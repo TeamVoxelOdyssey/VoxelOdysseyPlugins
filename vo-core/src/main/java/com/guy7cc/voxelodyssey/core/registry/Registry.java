@@ -27,6 +27,11 @@ import java.util.Map;
 import java.util.Set;
 import java.util.function.Supplier;
 
+/**
+ * A generic registry for objects that can be identified by a key.
+ *
+ * @param <T> the type of objects in the registry
+ */
 public class Registry<T extends RegistryObject> {
     private final Supplier<JavaPlugin> plugin;
     private final Map<Key, T> map = new HashMap<>(128);
@@ -35,6 +40,12 @@ public class Registry<T extends RegistryObject> {
         this.plugin = plugin;
     }
 
+    /**
+     * Registers an object in the registry.
+     *
+     * @param object the object to register
+     * @return the registered object
+     */
     public T register(T object) {
         if (map.containsKey(object.getKey()) && plugin.get() != null) {
             plugin.get().getLogger().warning(String.format("A registry object keyed by %s is already registered, overriding it", object.getKey()));
@@ -43,18 +54,40 @@ public class Registry<T extends RegistryObject> {
         return object;
     }
 
+    /**
+     * Gets an object from the registry by its key.
+     *
+     * @param key the key of the object to get
+     * @return the object associated with the key, or null if not found
+     */
     public T get(Key key) {
         return map.get(key);
     }
 
+    /**
+     * Checks if the registry contains an object with the specified key.
+     *
+     * @param key the key to check
+     * @return true if the registry contains the key, false otherwise
+     */
     public boolean containsKey(Key key) {
         return map.containsKey(key);
     }
 
+    /**
+     * Retrieves all keys in the registry.
+     *
+     * @return a set of all keys in the registry
+     */
     public Set<Key> keySet() {
         return map.keySet();
     }
 
+    /**
+     * Retrieves all registered objects.
+     *
+     * @return a collection of all registered objects
+     */
     public Collection<T> objects() {
         return map.values();
     }

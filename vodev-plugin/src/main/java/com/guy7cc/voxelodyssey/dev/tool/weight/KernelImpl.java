@@ -18,6 +18,10 @@
  */
 package com.guy7cc.voxelodyssey.dev.tool.weight;
 
+/**
+ * A kernel implementation for use in terrain management.
+ * @param <T>
+ */
 public class KernelImpl<T> implements Kernel<T> {
     protected final int size;
     protected final int diameter;

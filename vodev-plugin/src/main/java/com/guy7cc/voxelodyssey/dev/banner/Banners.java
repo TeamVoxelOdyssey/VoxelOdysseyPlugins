@@ -28,6 +28,12 @@ import org.bukkit.block.banner.PatternType;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.BannerMeta;
 
+/**
+ * A class that holds all the banners in the game.
+ * <p>
+ * This class is used to register and retrieve banners.
+ * </p>
+ */
 public class Banners {
     public static final Registry<BannerFactory> REGISTRY = new Registry<>(VODevPlugin::getPlugin);
     public static final BannerFactory WORLD2_UNDERGROUND = register(new BannerFactory(

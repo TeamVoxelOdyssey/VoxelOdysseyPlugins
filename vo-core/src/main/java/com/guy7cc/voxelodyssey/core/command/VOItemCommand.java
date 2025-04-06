@@ -29,6 +29,10 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
+/**
+ * Represents a command descriptor for voitem commands.
+ * This class implements the CommandDescriptor interface and provides functionality to handle voitem commands.
+ */
 public class VOItemCommand implements CommandDescriptor {
     private final CommandComposition composition = new CommandComposition()
             .add(

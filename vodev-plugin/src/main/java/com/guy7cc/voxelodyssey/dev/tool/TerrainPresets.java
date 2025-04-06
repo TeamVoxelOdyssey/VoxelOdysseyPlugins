@@ -23,6 +23,12 @@ import com.sk89q.worldedit.world.block.BlockTypes;
 
 import java.util.*;
 
+/**
+ * A class that holds all the terrain presets.
+ * <p>
+ * This class is used to register and retrieve terrain presets.
+ * </p>
+ */
 public class TerrainPresets {
     private static final Map<String, List<BlockType>> presets = new HashMap<>();
 

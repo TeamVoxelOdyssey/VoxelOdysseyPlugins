@@ -22,26 +22,74 @@ import com.guy7cc.voxelodyssey.core.common.Tickable;
 
 import java.util.Collection;
 
+/**
+ * Represents a component of a sidebar in the VoxelOdyssey game.
+ * This interface extends Tickable to provide functionality for updating the component.
+ */
 public interface SidebarComponent extends Tickable {
+    /**
+     * Gets the containers that this component is part of.
+     *
+     * @return a collection of SidebarBridge objects representing the containers
+     */
     Collection<SidebarBridge> getContainers();
 
+    /**
+     * Adds a container to this component.
+     *
+     * @param bridge the SidebarBridge object representing the container to add
+     */
     void addContainer(SidebarBridge bridge);
 
+    /**
+     * Removes a container from this component.
+     *
+     * @param bridge the SidebarBridge object representing the container to remove
+     */
     void removeContainer(SidebarBridge bridge);
 
+    /**
+     * Gets the text associated with this component.
+     *
+     * @return the text of this component
+     */
     String getText();
 
+    /**
+     * Sets the text for this component.
+     *
+     * @param text the new text for this component
+     */
     void setText(String text);
 
+    /**
+     * Refreshes the component in all containers.
+     * This method is called to update the component's state in all associated containers.
+     */
     default void refresh() {
         for (SidebarBridge bridge : getContainers()) {
             bridge.refreshComponent(this);
         }
     }
 
+    /**
+     * Gets the score associated with this component.
+     *
+     * @return the score of this component
+     */
     int getScore();
 
+    /**
+     * Sets the score for this component.
+     *
+     * @param score the new score for this component
+     */
     void setScore(int score);
 
+    /**
+     * Checks if this component should be removed.
+     *
+     * @return true if the component should be removed, false otherwise
+     */
     boolean shouldBeRemoved();
 }

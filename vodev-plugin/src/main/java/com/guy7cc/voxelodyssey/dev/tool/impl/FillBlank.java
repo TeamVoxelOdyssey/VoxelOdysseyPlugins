@@ -32,6 +32,12 @@ import org.bukkit.entity.Player;
 import java.util.HashSet;
 import java.util.Set;
 
+/**
+ * A tool that fills blank spaces with stone blocks.
+ * <p>
+ * This tool uses WorldEdit to fill blank spaces with stone blocks.
+ * </p>
+ */
 public class FillBlank extends Tool {
     private int size;
 

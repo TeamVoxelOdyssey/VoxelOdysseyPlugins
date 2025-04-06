@@ -23,6 +23,9 @@ import org.jetbrains.annotations.Nullable;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Represents a boolean command argument.
+ */
 public class BooleanArg implements CommandArg<Boolean> {
     private final String name;
 

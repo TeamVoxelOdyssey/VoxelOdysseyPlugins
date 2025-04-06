@@ -25,6 +25,10 @@ import com.guy7cc.voxelodyssey.core.property.AbstractState;
 import com.guy7cc.voxelodyssey.core.property.VOCoreProperties;
 import com.guy7cc.voxelodyssey.core.registry.Key;
 
+/**
+ * Represents the state of a VOEffect.
+ * It is used to store the effect's properties and its owner.
+ */
 public class VOEffectState extends AbstractState<VOEffect<?>, VOEffectState> {
     private VOEffect<?> effect;
 

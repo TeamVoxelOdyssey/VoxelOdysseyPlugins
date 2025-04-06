@@ -25,6 +25,9 @@ import java.util.List;
 import java.util.Set;
 import java.util.function.Supplier;
 
+/**
+ * Represents a literal command argument.
+ */
 public class LiteralArg implements CommandArg<String> {
     private final String name;
     private final boolean anyMatches;

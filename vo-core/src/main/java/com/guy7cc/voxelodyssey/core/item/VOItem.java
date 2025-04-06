@@ -27,6 +27,10 @@ import org.bukkit.event.block.Action;
 import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.ItemStack;
 
+/**
+ * Represents a VoxelOdyssey item.
+ * This class extends AbstractRegistryObject and provides methods for item interaction.
+ */
 public class VOItem extends AbstractRegistryObject {
     public final Material material;
     public final int loreLineNum;
@@ -39,6 +43,12 @@ public class VOItem extends AbstractRegistryObject {
         this.usage = usage;
     }
 
+    /**
+     * Gets the default state of the item.
+     * This method creates a new ItemStack with the specified material and wraps it in a VOItemStackWrapper.
+     *
+     * @return the default state of the item
+     */
     public VOItemStackWrapper getDefaultState() {
         ItemStack itemStack = new ItemStack(material);
         VOItemStackWrapper state = new VOItemStackWrapper(itemStack);
@@ -49,26 +59,76 @@ public class VOItem extends AbstractRegistryObject {
         return state;
     }
 
+    /**
+     * Handles the use action on the item.
+     * This method can be overridden to provide custom behavior when the item is used.
+     *
+     * @param state the current state of the item
+     * @param player the player using the item
+     * @param slot the equipment slot
+     * @param action the action performed
+     * @return the result of the item interaction
+     */
     public VOItemInteractionResult use(VOItemStackWrapper state, Player player, EquipmentSlot slot, Action action) {
         return VOItemInteractionResult.UNAVAILABLE;
     }
 
+    /**
+     * Handles the use action on an entity with the item.
+     * This method can be overridden to provide custom behavior when the item is used on an entity.
+     *
+     * @param state the current state of the item
+     * @param player the player using the item
+     * @param slot the equipment slot
+     * @param entity the entity being interacted with
+     * @return the result of the item interaction
+     */
     public VOItemInteractionResult useOnEntity(VOItemStackWrapper state, Player player, EquipmentSlot slot, Entity entity) {
         return VOItemInteractionResult.UNAVAILABLE;
     }
 
+    /**
+     * Handles the action when the item is set to the inventory.
+     * This method can be overridden to provide custom behavior when the item is set to the inventory.
+     *
+     * @param state the current state of the item
+     * @param player the player setting the item
+     * @param slot the equipment slot
+     */
     public void onSetToInventory(VOItemStackWrapper state, Player player, int slot) {
 
     }
 
+    /**
+     * Handles the action on tick in the equipment slot.
+     * This method can be overridden to provide custom behavior when the item is ticked in the equipment slot.
+     *
+     * @param state the current state of the item
+     * @param player the player holding the item
+     * @param slot the equipment slot
+     */
     public void tickInEquipmentSlot(VOItemStackWrapper state, Player player, EquipmentSlot slot) {
 
     }
 
+    /**
+     * Handles the action on tick in the quick bar.
+     * This method can be overridden to provide custom behavior when the item is ticked in the quick bar.
+     *
+     * @param state the current state of the item
+     * @param player the player holding the item
+     * @param index the index of the quick bar slot
+     */
     public void tickInQuickBar(VOItemStackWrapper state, Player player, int index) {
 
     }
 
+    /**
+     * Handles the action when the inventory is changed.
+     * This method can be overridden to provide custom behavior when the inventory is changed.
+     *
+     * @param player the player whose inventory has changed
+     */
     public void onInventoryChanged(Player player) {
 
     }

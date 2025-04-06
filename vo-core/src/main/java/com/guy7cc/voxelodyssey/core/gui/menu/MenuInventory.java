@@ -23,6 +23,10 @@ import org.bukkit.Bukkit;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.Inventory;
 
+/**
+ * Represents a menu inventory in the game.
+ * This class is responsible for creating and managing the inventory.
+ */
 public class MenuInventory extends AbstractWrapper<Inventory> {
     private MenuInventoryProperty property;
 

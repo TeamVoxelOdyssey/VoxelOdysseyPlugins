@@ -22,9 +22,23 @@ import com.guy7cc.voxelodyssey.core.common.Tickable;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.TextColor;
 
+/**
+ * Represents a component in a title.
+ */
 public interface TitleComponent extends Tickable {
+    /**
+     * Gets the paper component associated with this title component.
+     *
+     * @return the component
+     */
     Component getPaperComponent();
 
+    /**
+     * Gets the rank of the component.
+     * The rank determines the order in which components are displayed.
+     *
+     * @return the rank of the component
+     */
     boolean shouldBeRemoved();
 
     static Component alignLeft(String text, TitlePosition pos) {

@@ -26,16 +26,36 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.function.Consumer;
 
+/**
+ * A utility class that provides methods for handling exceptions in a "sneaky" way.
+ * It allows you to throw checked exceptions without declaring them in the method signature.
+ */
 public final class SneakyThrower {
     private SneakyThrower() {
 
     }
 
+    /**
+     * Wraps a ThrowingConsumer into a standard Consumer.
+     * This allows you to use a ThrowingConsumer in places where a standard Consumer is expected.
+     *
+     * @param consumer the ThrowingConsumer to wrap
+     * @return a standard Consumer that wraps the ThrowingConsumer
+     * @param <T> the type of the input to the consumer
+     */
     @NotNull
     public static <T> Consumer<T> sneaky(@NotNull final ThrowingConsumer<T> consumer) {
         return consumer;
     }
 
+    /**
+     * Throws a Throwable without declaring it in the method signature.
+     * This is a "sneaky" way to throw checked exceptions.
+     *
+     * @param throwable the Throwable to throw
+     * @param <E>       the type of the Throwable
+     * @throws E the Throwable being thrown
+     */
     @SuppressWarnings("unchecked")
     public static <E extends Throwable> void sneakyThrow(@NotNull Throwable throwable) throws E {
         throw (E) throwable;

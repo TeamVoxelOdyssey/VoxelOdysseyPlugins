@@ -24,6 +24,12 @@ import org.bukkit.entity.Player;
 
 import java.util.List;
 
+/**
+ * Interface for providing modifiers.
+ * <p>
+ * This interface is used to create modifiers in the game.
+ * </p>
+ */
 public interface ModifierProvider {
     List<VOModifierState> createModifier(VOItemStackWrapper state, Player player, int slot);
 }

@@ -23,6 +23,11 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.function.Supplier;
 
+/**
+ * Enum representing the reasons for invalid data.
+ * Each reason has a flag indicating if renaming is required, a suffix supplier for generating a new file name,
+ * and a message describing the reason.
+ */
 public enum InvalidDataReason {
     EMPTY(false, () -> "", "The data is empty. New file will be created."),
     OLD(true, () -> "_old_" + getDate(), "The data is old. New file will be created."),

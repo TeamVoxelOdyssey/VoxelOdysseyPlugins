@@ -21,6 +21,11 @@ package com.guy7cc.voxelodyssey.core.property;
 import com.guy7cc.voxelodyssey.core.registry.AbstractRegistryObject;
 import com.guy7cc.voxelodyssey.core.registry.Key;
 
+/**
+ * Abstract class representing a property with a default value.
+ *
+ * @param <T> the type of the property value
+ */
 public abstract class AbstractProperty<T> extends AbstractRegistryObject implements Property<T> {
     private final T defaultValue;
 

@@ -24,6 +24,10 @@ import org.bukkit.entity.Player;
 
 import java.util.Collection;
 
+/**
+ * Interface representing a bridge for a sidebar in the VoxelOdyssey game.
+ * This interface extends Tickable to provide tick functionality.
+ */
 public interface SidebarBridge extends Tickable {
     @Override
     default void tick(int globalTick){
@@ -36,25 +40,72 @@ public interface SidebarBridge extends Tickable {
         return getComponents();
     }
 
+    /**
+     * Returns the player associated with this sidebar.
+     *
+     * @return the player associated with this sidebar
+     */
     Player getPlayer();
 
+    /**
+     * Returns the components of this sidebar.
+     *
+     * @return a collection of components in this sidebar
+     */
     Collection<SidebarComponent> getComponents();
 
+    /**
+     * Adds a component to this sidebar.
+     *
+     * @param component the component to add
+     */
     void addComponent(SidebarComponent component);
 
+    /**
+     * Sets a component at the specified index in this sidebar.
+     *
+     * @param component the component to set
+     * @param index the index at which to set the component
+     */
     void setComponent(SidebarComponent component, int index);
 
+    /**
+     * Removes a component from this sidebar.
+     *
+     * @param component the component to remove
+     */
     void removeComponent(SidebarComponent component);
 
+    /**
+     * Refreshes the specified component in this sidebar.
+     *
+     * @param component the component to refresh
+     */
     void refreshComponent(SidebarComponent component);
 
+    /**
+     * Refreshes all components in this sidebar.
+     */
     default void refreshAll() {
         getComponents().forEach(this::refreshComponent);
     }
 
+    /**
+     * Sets the display name of this sidebar.
+     *
+     * @param display the display name to set
+     */
     void setDisplay(Component display);
 
+    /**
+     * Sets the visibility of this sidebar.
+     *
+     * @param visible true to set the sidebar visible, false to hide it
+     */
     void setVisible(Boolean visible);
 
+    /**
+     * Disposes of this sidebar, cleaning up any resources and removing it from the player.
+     */
     void dispose();
 }

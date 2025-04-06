@@ -20,6 +20,12 @@ package com.guy7cc.voxelodyssey.core.property;
 
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * Represents a state that can hold properties.
+ *
+ * @param <T> The type of the owner of this state.
+ * @param <S> The type of the state itself.
+ */
 public interface State<T, S extends State<T, S>> {
     T getOwner();
 

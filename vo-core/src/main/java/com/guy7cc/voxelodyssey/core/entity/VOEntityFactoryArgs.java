@@ -18,5 +18,8 @@
  */
 package com.guy7cc.voxelodyssey.core.entity;
 
+/**
+ * Factory arguments for creating VOEntities.
+ */
 public class VOEntityFactoryArgs {
 }

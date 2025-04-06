@@ -28,6 +28,11 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+/**
+ * Represents a registry object command argument.
+ *
+ * @param <T> The type of the argument.
+ */
 public class RegistryArg<T extends RegistryObject> implements CommandArg<T>{
     private final String name;
     private final Registry<T> registry;

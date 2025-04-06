@@ -38,6 +38,12 @@ import java.io.File;
 import java.util.Map;
 import java.util.logging.Logger;
 
+/**
+ * The main class for the VoxelOdysseyDeveloperTools plugin.
+ * <p>
+ * This class is responsible for setting up the plugin and providing access to various components.
+ * </p>
+ */
 public class VoxelOdysseyDeveloperTools {
     public static final String DATA_VERSION = "v0";
 

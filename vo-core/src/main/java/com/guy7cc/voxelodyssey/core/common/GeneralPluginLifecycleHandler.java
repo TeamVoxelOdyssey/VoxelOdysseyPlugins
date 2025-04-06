@@ -28,6 +28,10 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.logging.Level;
 
+/**
+ * Handles the lifecycle of a plugin by managing a list of {@link PluginLifecycleListener} instances.
+ * It allows for the collection of listeners from fields and static fields, and executes lifecycle methods in order.
+ */
 public class GeneralPluginLifecycleHandler {
     private final JavaPlugin plugin;
     private List<PluginLifecycleListener> list = new ArrayList<>();
@@ -36,24 +40,49 @@ public class GeneralPluginLifecycleHandler {
         this.plugin = plugin;
     }
 
+    /**
+     * Registers a single {@link PluginLifecycleListener}.
+     *
+     * @param listener the listener to register
+     */
     public void add(PluginLifecycleListener listener){
         list.add(listener);
     }
 
+    /**
+     * Registers a collection of {@link PluginLifecycleListener}s.
+     *
+     * @param listeners the collection of listeners to register
+     */
     public void add(Collection<PluginLifecycleListener> listeners){
         listeners.forEach(this::add);
     }
 
+    /**
+     * Collects {@link PluginLifecycleListener}s from the fields of an object and registers them.
+     *
+     * @param obj the object to collect listeners from
+     */
     public void collect(Object obj){
         List<Object> list = ReflectionUtil.collectFields(obj, o -> o instanceof PluginLifecycleListener, plugin.getLogger());
         add(list.stream().map(o -> (PluginLifecycleListener) o).toList());
     }
 
+    /**
+     * Collects static {@link PluginLifecycleListener}s from the fields of a class and registers them.
+     *
+     * @param clazz the class to collect listeners from
+     */
     public void collectStatic(Class<?> clazz){
         List<Object> list = ReflectionUtil.collectStaticFields(clazz, o -> o instanceof PluginLifecycleListener, plugin.getLogger());
         add(list.stream().map(o -> (PluginLifecycleListener) o).toList());
     }
 
+    /**
+     * Executes a lifecycle method on all registered listeners in order.
+     *
+     * @param methodName the name of the lifecycle method to execute
+     */
     public void executeLifecycleMethod(String methodName) {
         list.stream()
                 .sorted(Comparator.comparingInt(listener -> getOrderValue(listener, methodName)))
@@ -83,14 +112,23 @@ public class GeneralPluginLifecycleHandler {
         }
     }
 
+    /**
+     * Executes the onPluginEnabled lifecycle method on all registered listeners.
+     */
     public void onPluginEnabled() {
         executeLifecycleMethod("onPluginEnabled");
     }
 
+    /**
+     * Executes the onFirstTick lifecycle method on all registered listeners.
+     */
     public void onFirstTick() {
         executeLifecycleMethod("onFirstTick");
     }
 
+    /**
+     * Executes the onPluginDisabled lifecycle method on all registered listeners.
+     */
     public void onPluginDisabled() {
         executeLifecycleMethod("onPluginDisabled");
     }

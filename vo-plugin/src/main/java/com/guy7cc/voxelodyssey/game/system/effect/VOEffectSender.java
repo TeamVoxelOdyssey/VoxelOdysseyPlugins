@@ -20,6 +20,9 @@ package com.guy7cc.voxelodyssey.game.system.effect;
 
 import java.util.Collection;
 
+/**
+ * Interface for entities that can send effects.
+ */
 public interface VOEffectSender {
     Collection<VOEffectState> getEffectStates();
 }

@@ -26,6 +26,9 @@ import java.util.Map;
 import java.util.Set;
 import java.util.function.Supplier;
 
+/**
+ * A class that manages landmarks in the world.
+ */
 public class Landmarks {
     private static final Map<String, Supplier<Location>> landmarks = new HashMap<>();
 

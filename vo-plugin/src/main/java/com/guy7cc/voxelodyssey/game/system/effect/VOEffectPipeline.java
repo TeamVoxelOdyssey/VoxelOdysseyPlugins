@@ -30,6 +30,14 @@ import com.guy7cc.voxelodyssey.core.data.DataFormatException;
 
 import java.util.*;
 
+/**
+ * A pipeline for applying and modify effects for a receiver.
+ * <p>
+ * This class is used to create a pipeline of effects and modifiers that can be applied to a receiver.
+ * </p>
+ *
+ * @param <T> the type of the value being modified
+ */
 public class VOEffectPipeline<T extends Copyable<T>> implements Tickable, JsonSerializable<VOEffectPipeline<T>> {
     private final VOEffectApplicable<?> receiver;
     private final VOEffect<T> effect;
@@ -42,6 +50,11 @@ public class VOEffectPipeline<T extends Copyable<T>> implements Tickable, JsonSe
         this.effect = effect;
     }
 
+    /**
+     * Adds an effect state to the pipeline.
+     *
+     * @param state the effect state to add
+     */
     public void addEffect(VOEffectState state) {
         eStates.add(state);
         Optional<T> optional = effect.onEffectAdded(states, state, receiver);
@@ -53,6 +66,11 @@ public class VOEffectPipeline<T extends Copyable<T>> implements Tickable, JsonSe
         }
     }
 
+    /**
+     * Adds a modifier state to the pipeline.
+     *
+     * @param state the modifier state to add
+     */
     public void addModifier(VOModifierState state) {
         mStates.add(state);
         Optional<T> optional = effect.onModifierAdded(states, state, receiver);
@@ -64,10 +82,18 @@ public class VOEffectPipeline<T extends Copyable<T>> implements Tickable, JsonSe
         }
     }
 
+    /**
+     * Removes an effect state from the pipeline by its source.
+     *
+     * @param source the source of the effect state to remove
+     */
     public void clearModifierBySource(IndexedKey source) {
         mStates.removeIf(state -> state.getProperty(VOCoreProperties.SOURCE).equals(source));
     }
 
+    /**
+     * Removes all modifier states from the pipeline.
+     */
     public void clearModifierAll() {
         mStates.clear();
     }

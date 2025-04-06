@@ -29,6 +29,13 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Consumer;
 
+/**
+ * Abstract class representing a state with properties.
+ * This class implements the State interface and provides methods to manage properties.
+ *
+ * @param <T> the type of the state
+ * @param <U> the type of itself
+ */
 public abstract class AbstractState<T, U extends AbstractState<T, U>> implements State<T, U>, JsonSerializable<AbstractState<T, U>> {
     private final Map<Property<?>, Object> properties = new HashMap<>();
 

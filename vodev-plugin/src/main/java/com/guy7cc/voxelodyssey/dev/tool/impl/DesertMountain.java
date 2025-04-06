@@ -31,6 +31,12 @@ import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.util.Vector;
 
+/**
+ * A tool that creates a desert mountain at the location the player specifies.
+ * <p>
+ * This tool uses WorldEdit to create a mountain made of sandstone.
+ * </p>
+ */
 public class DesertMountain extends Tool {
     private int size;
 

@@ -25,6 +25,10 @@ import com.guy7cc.voxelodyssey.core.registry.Registry;
 
 import java.util.UUID;
 
+/**
+ * This class is responsible for managing the core properties in the VoxelOdyssey game.
+ * It provides a registry for Property objects and a method to register new properties.
+ */
 public class VOCoreProperties {
     public static final Registry<Property<?>> REGISTRY;
 

@@ -22,6 +22,9 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
+/**
+ * Represents a ranged float command argument.
+ */
 public class RangedFloatArg implements CommandArg<Float> {
     private final String name;
     private final float min;

@@ -27,6 +27,10 @@ import java.util.UUID;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+/**
+ * A utility class for reading and writing JSON files.
+ * It uses Gson for JSON parsing and serialization.
+ */
 public class JsonFileIO {
     private final Gson gson = new GsonBuilder()
             .registerTypeAdapter(UUID.class, new UuidAdapter())
@@ -38,6 +42,12 @@ public class JsonFileIO {
         this.logger = logger;
     }
 
+    /**
+     * Saves a JsonElement to a file.
+     *
+     * @param element the JsonElement to save
+     * @param file the file to save to
+     */
     public void save(@NotNull JsonElement element, @NotNull File file) {
         try {
             file.getParentFile().mkdirs();
@@ -59,6 +69,12 @@ public class JsonFileIO {
         }
     }
 
+    /**
+     * Loads a JsonElement from a file.
+     *
+     * @param file the file to load from
+     * @return the loaded JsonElement, or null if the file could not be read
+     */
     @Nullable
     public JsonElement load(@NotNull File file) {
         try (BufferedReader reader = new BufferedReader(new FileReader(file))) {

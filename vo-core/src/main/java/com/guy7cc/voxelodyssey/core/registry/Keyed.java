@@ -18,6 +18,15 @@
  */
 package com.guy7cc.voxelodyssey.core.registry;
 
+/**
+ * Interface representing an object that has a key.
+ * The key is used to uniquely identify the object in a registry.
+ */
 public interface Keyed {
+    /**
+     * Gets the key associated with this object.
+     *
+     * @return the key
+     */
     Key getKey();
 }

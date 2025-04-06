@@ -24,6 +24,9 @@ import org.bukkit.inventory.ItemStack;
 
 import java.util.function.Supplier;
 
+/**
+ * A factory for creating banners.
+ */
 public class BannerFactory extends AbstractRegistryObject {
     private final Supplier<ItemStack> supplier;
 

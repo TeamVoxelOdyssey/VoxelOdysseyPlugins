@@ -29,6 +29,10 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.logging.Level;
 
+/**
+ * Handles the loading and saving of data files using Gson.
+ * It collects data holders, loads data from a file, and saves data to a file.
+ */
 public class DataLoader implements PluginLifecycleListener {
     private final JavaPlugin plugin;
     private final File file;
@@ -45,16 +49,31 @@ public class DataLoader implements PluginLifecycleListener {
         this.version = version;
     }
 
+    /**
+     * Collects all DataHolder instances from the fields of the given object.
+     *
+     * @param obj the object to collect DataHolder instances from
+     */
     public void collectHolders(Object obj){
         java.util.List<Object> list = ReflectionUtil.collectFields(obj, o -> o instanceof DataHolder, plugin.getLogger());
         holders.addAll(list.stream().map(o -> (DataHolder) o).toList());
     }
 
+    /**
+     * Collects all static DataHolder instances from the given class.
+     *
+     * @param clazz the class to collect static DataHolder instances from
+     */
     public void collectStaticHolders(Class<?> clazz){
         java.util.List<Object> list = ReflectionUtil.collectStaticFields(clazz, o -> o instanceof DataHolder, plugin.getLogger());
         holders.addAll(list.stream().map(o -> (DataHolder) o).toList());
     }
 
+    /**
+     * Gets the version of the data file.
+     *
+     * @return the version of the data file
+     */
     public String getVersion(){
         return version;
     }
@@ -71,6 +90,12 @@ public class DataLoader implements PluginLifecycleListener {
         save();
     }
 
+    /**
+     * Loads data from the file.
+     * If the file is empty or broken, it marks the data as invalid.
+     * If the version does not match, it marks the data as old.
+     * If the data is valid, it loads the data into the holders.
+     */
     public void load() {
         if(file.exists()){
             JsonElement element = gson.load(file);
@@ -97,6 +122,10 @@ public class DataLoader implements PluginLifecycleListener {
         }
     }
 
+    /**
+     * Saves data to the file.
+     * It creates a new JsonObject, adds the version and the data from the holders, and saves it to the file.
+     */
     public void save() {
         JsonObject data = new JsonObject();
         data.addProperty("version", getVersion());
@@ -106,6 +135,12 @@ public class DataLoader implements PluginLifecycleListener {
         gson.save(data, file);
     }
 
+    /**
+     * Marks the data as invalid and logs the reason.
+     * If the reason requires renaming, it renames the file.
+     *
+     * @param reason the reason for marking the data as invalid
+     */
     public void markAsInvalid(InvalidDataReason reason){
         if(this.reason != null) return;
         this.reason = reason;

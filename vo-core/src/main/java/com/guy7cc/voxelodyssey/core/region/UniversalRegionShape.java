@@ -20,6 +20,11 @@ package com.guy7cc.voxelodyssey.core.region;
 
 import org.bukkit.util.Vector;
 
+/**
+ * A region shape that represents a universal region, which contains all points in space.
+ * This class implements the RegionShape interface and provides methods to check if a point
+ * or another region shape is contained within this universal region.
+ */
 public final class UniversalRegionShape implements RegionShape {
     @Override
     public boolean contains(Vector v) {

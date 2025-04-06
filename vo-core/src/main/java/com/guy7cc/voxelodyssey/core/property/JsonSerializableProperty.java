@@ -26,6 +26,11 @@ import com.guy7cc.voxelodyssey.core.registry.Key;
 
 import java.util.function.Supplier;
 
+/**
+ * A property that can be serialized to and from JSON.
+ *
+ * @param <T> the type of the property
+ */
 public class JsonSerializableProperty<T extends JsonSerializable<T>> extends AbstractRegistryObject implements Property<T> {
     private final Supplier<T> supplier;
 

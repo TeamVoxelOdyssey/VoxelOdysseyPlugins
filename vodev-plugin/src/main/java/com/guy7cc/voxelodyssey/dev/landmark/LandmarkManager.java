@@ -30,6 +30,9 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
+/**
+ * A class that manages landmarks in the world.
+ */
 public class LandmarkManager implements DataHolder {
     private final JavaPlugin plugin;
     private final Map<String, Landmark> map = new HashMap<>();

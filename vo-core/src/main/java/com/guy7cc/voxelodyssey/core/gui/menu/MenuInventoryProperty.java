@@ -20,6 +20,10 @@ package com.guy7cc.voxelodyssey.core.gui.menu;
 
 import net.kyori.adventure.text.Component;
 
+/**
+ * Represents the properties of a menu inventory.
+ * This includes the number of lines, title, and components.
+ */
 public class MenuInventoryProperty {
     public final int lineNum;
     public final Component title;

@@ -40,6 +40,9 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.Collection;
 
+/**
+ * VOEntityManager is a class that manages the creation and assignment of VOEntity objects to entities.
+ */
 public class VOEntityManager extends WrapperContainer<Entity, VOEntity<?>> implements DataHolder, Tickable, Listener, PluginLifecycleListener {
     private final JavaPlugin plugin;
     private JsonObject data;
@@ -50,12 +53,26 @@ public class VOEntityManager extends WrapperContainer<Entity, VOEntity<?>> imple
         this.data = new JsonObject();
     }
 
+    /**
+     * Spawns a new VOEntity of the specified type with the given arguments.
+     *
+     * @param type the type of VOEntity to spawn
+     * @param args the arguments for the VOEntity
+     * @return the spawned VOEntity
+     * @param <T> VOEntity type
+     * @param <S> VOEntityFactoryArgs type
+     */
     public <T extends VOEntity<?>, S extends VOEntityFactoryArgs> T spawn(VOEntityType<T, S> type, S args) {
         T voentity = type.create(args);
         put(voentity.getHandle(), voentity);
         return voentity;
     }
 
+    /**
+     * Retrieves the VOPlayer associated with the given player.
+     * @param player the player to get the VOPlayer for
+     * @return the VOPlayer associated with the player, or null if not found
+     */
     public VOPlayer getVOPlayer(Player player){
         VOEntity<?> voentity = get(player);
         if(voentity instanceof VOPlayer voplayer) return voplayer;

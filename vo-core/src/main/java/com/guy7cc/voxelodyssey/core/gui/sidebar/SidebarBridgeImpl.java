@@ -28,6 +28,10 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
+/**
+ * Implementation of the SidebarBridge interface for managing a sidebar in Minecraft.
+ * This class handles the creation, updating, and removal of sidebar components for a player.
+ */
 public class SidebarBridgeImpl implements SidebarBridge {
     private final Player player;
     private Component display;

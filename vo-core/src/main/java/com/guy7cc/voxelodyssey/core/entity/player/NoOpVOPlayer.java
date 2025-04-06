@@ -26,6 +26,10 @@ import com.guy7cc.voxelodyssey.core.registry.Key;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 
+/**
+ * A no-operation implementation of the VOPlayer interface.
+ * It wraps a Player object and provides a no-op implementation of the VOPlayer interface.
+ */
 public final class NoOpVOPlayer implements VOPlayer {
     private final Player handle;
 
@@ -53,6 +57,10 @@ public final class NoOpVOPlayer implements VOPlayer {
         return this;
     }
 
+    /**
+     * A factory class for create instances of NoOpVOPlayer.
+     * It extends the VOEntityType class and provides a method to wrap a Player object.
+     */
     public static final class Type extends VOEntityType<VOPlayer, FactoryArgs> {
         public Type() {
             super(Key.vo("voplayer"));

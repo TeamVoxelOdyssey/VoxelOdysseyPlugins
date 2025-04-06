@@ -18,6 +18,14 @@
  */
 package com.guy7cc.voxelodyssey.core.item;
 
+/**
+ * Interface representing an object that has a cooldown.
+ */
 public interface CoolDownHolder {
+    /**
+     * Gets the cooldown associated with this object.
+     *
+     * @return the cooldown
+     */
     CoolDown getCoolDown();
 }

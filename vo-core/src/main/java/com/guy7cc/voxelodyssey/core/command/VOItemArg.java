@@ -28,6 +28,9 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+/**
+ * Represents a Voxel Odyssey item command argument.
+ */
 public class VOItemArg implements CommandArg<VOItem> {
     private final String name;
 

@@ -29,6 +29,9 @@ import java.util.Arrays;
 import java.util.Map;
 import java.util.logging.Level;
 
+/**
+ * A class representing a vector of elemental values.
+ */
 public class VOElementalVector implements Copyable<VOElementalVector>, JsonSerializable<VOElementalVector> {
     public static final int LENGTH = VOElement.values().length;
 

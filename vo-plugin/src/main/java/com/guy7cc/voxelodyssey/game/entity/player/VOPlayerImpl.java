@@ -51,6 +51,10 @@ import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
 
+/**
+ * Implementation of the VOPlayer interface.
+ * This replaces the NoOpPlayer implementation by registering the entity type to the registry.
+ */
 public class VOPlayerImpl implements VOPlayer, CoolDownHolder, VOEffectApplicable<Player> {
     private final Player handle;
     private double hp = 20;

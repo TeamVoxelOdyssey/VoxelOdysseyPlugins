@@ -23,6 +23,10 @@ import org.bukkit.util.Vector;
 
 import java.util.Objects;
 
+/**
+ * Represents a spherical region in 3D space.
+ * The sphere is defined by its center and radius.
+ */
 public final class Sphere implements RegionShape{
     private final Vector c;
     private final double r;

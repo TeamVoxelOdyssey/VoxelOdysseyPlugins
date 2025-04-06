@@ -21,6 +21,12 @@ package com.guy7cc.voxelodyssey.dev.tool;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 
+/**
+ * A tool that can be used by a player.
+ * <p>
+ * This class is used to create tools that can be used by a player.
+ * </p>
+ */
 public abstract class Tool {
     public final String name;
 

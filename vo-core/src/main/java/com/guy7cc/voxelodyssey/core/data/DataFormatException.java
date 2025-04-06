@@ -18,6 +18,10 @@
  */
 package com.guy7cc.voxelodyssey.core.data;
 
+/**
+ * Exception thrown when there is a data format error.
+ * This can occur when loading data from JSON or other formats.
+ */
 public class DataFormatException extends Exception {
     public DataFormatException(String message) {
         super(message);

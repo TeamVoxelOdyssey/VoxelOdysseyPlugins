@@ -23,6 +23,9 @@ import org.jetbrains.annotations.Nullable;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Represents a ranged integer command argument.
+ */
 public class RangedIntegerArg implements CommandArg<Integer> {
     private final String name;
     private final int min;

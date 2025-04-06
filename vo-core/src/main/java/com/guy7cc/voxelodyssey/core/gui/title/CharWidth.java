@@ -22,6 +22,13 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.*;
 
+/**
+ * CharWidth is a utility class that provides functionality to determine the width of characters
+ * and manage character width groups.
+ * <p>
+ * It allows adding character width groups, validating them, and converting characters to their
+ * corresponding width.
+ */
 public class CharWidth {
     public static final int DEFAULT_WIDTH = 8;
 

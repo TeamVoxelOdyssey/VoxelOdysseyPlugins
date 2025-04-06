@@ -27,13 +27,41 @@ import java.util.List;
 import java.util.Set;
 import java.util.function.Supplier;
 
+/**
+ * Represents a command argument.
+ *
+ * @param <T> The type of the argument.
+ */
 public interface CommandArg<T> {
+    /**
+     * Gets the name of the argument.
+     *
+     * @return The name of the argument.
+     */
     String getName();
 
+    /**
+     * Checks if the argument matches the intended string.
+     *
+     * @param arg The string to check.
+     * @return True if the argument matches, false otherwise.
+     */
     boolean matches(String arg);
 
+    /**
+     * Gets the value of the argument from the string.
+     *
+     * @param arg The string to get the value from.
+     * @return The value of the argument.
+     */
     T get(String arg);
 
+    /**
+     * Gets the tab completion for the argument.
+     *
+     * @param arg The string to get the tab completion for.
+     * @return The list of possible completions.
+     */
     @Nullable
     List<String> onTabComplete(String arg);
 

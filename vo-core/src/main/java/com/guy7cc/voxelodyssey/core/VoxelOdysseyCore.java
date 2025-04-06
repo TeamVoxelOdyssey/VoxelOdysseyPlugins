@@ -37,6 +37,11 @@ import org.bukkit.scoreboard.Scoreboard;
 import java.io.File;
 import java.util.logging.Logger;
 
+/*
+ * VoxelOdysseyCore is the core class for the VoxelOdysseyCore plugin.
+ * It provides access to various components of the plugin, including
+ * lifecycle management, event handling, entity management, and data loading.
+ */
 public final class VoxelOdysseyCore {
     public static final String NAMESPACE = "voxelodyssey";
     public static final String DATA_VERSION = "v0";

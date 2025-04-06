@@ -22,6 +22,13 @@ import com.guy7cc.voxelodyssey.core.VoxelOdysseyCore;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
+/**
+ * The main class for the VoxelOdysseyDeveloperTools plugin.
+ * <p>
+ *     This class is the entry point for the plugin and is responsible for loading
+ *     and enabling the plugin.
+ * </p>
+ */
 public final class VODevPlugin extends JavaPlugin {
     private static VODevPlugin plugin;
 

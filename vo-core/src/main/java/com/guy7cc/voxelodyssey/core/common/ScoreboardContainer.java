@@ -33,6 +33,10 @@ import org.bukkit.scoreboard.ScoreboardManager;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * ScoreboardContainer is a singleton class that manages the creation and assignment of scoreboards to players.
+ * It implements the Listener interface to handle player join and quit events.
+ */
 public class ScoreboardContainer implements Listener, PluginLifecycleListener {
     private final JavaPlugin plugin;
     private boolean initialized = false;
@@ -43,10 +47,21 @@ public class ScoreboardContainer implements Listener, PluginLifecycleListener {
         this.plugin = plugin;
     }
 
+    /**
+     * Checks if the scoreboard manager is initialized.
+     *
+     * @return true if initialized, false otherwise
+     */
     public boolean isInitialized(){
         return initialized;
     }
 
+    /**
+     * Gets the scoreboard for a player.
+     *
+     * @param player the player to get the scoreboard for
+     * @return the player's scoreboard, or null if not initialized
+     */
     public Scoreboard getScoreboard(Player player){
         return map.get(player);
     }

@@ -24,6 +24,12 @@ package com.guy7cc.voxelodyssey.core.common;
 
 import java.util.function.Consumer;
 
+/**
+ * A functional interface that extends the Consumer interface to allow for throwing exceptions.
+ * This interface is used to handle exceptions in a more flexible way.
+ *
+ * @param <T> the type of the input to the operation
+ */
 @FunctionalInterface
 public interface ThrowingConsumer<T> extends Consumer<T> {
     @Override

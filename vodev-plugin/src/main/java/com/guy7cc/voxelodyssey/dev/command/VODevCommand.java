@@ -39,6 +39,12 @@ import org.jetbrains.annotations.Nullable;
 import java.util.List;
 import java.util.Set;
 
+/**
+ * A command that provides various developer tools and utilities.
+ * <p>
+ * This command is used to manage landmarks, set terrain organizers, and perform other developer-related tasks.
+ * </p>
+ */
 public class VODevCommand implements CommandDescriptor {
     private final CommandComposition composition = new CommandComposition()
             .add(

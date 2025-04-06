@@ -21,8 +21,22 @@ package com.guy7cc.voxelodyssey.core.gui.menu;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.ItemStack;
 
+/**
+ * Represents a component in a menu.
+ * This interface defines the basic structure for menu components.
+ */
 public interface MenuComponent {
+    /**
+     * Gets the item stack associated with this menu component.
+     *
+     * @return the item stack
+     */
     ItemStack getDefaultItemStack();
 
+    /**
+     * Handles the click event on this menu component.
+     *
+     * @param event the inventory click event
+     */
     void onInventoryClick(InventoryClickEvent event);
 }

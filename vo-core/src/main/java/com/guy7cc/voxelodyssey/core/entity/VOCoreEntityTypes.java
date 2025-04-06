@@ -23,6 +23,10 @@ import com.guy7cc.voxelodyssey.core.entity.player.NoOpVOPlayer;
 import com.guy7cc.voxelodyssey.core.entity.player.VOPlayer;
 import com.guy7cc.voxelodyssey.core.registry.Registry;
 
+/**
+ * This class is responsible for registering and managing entity types in the VoxelOdyssey game.
+ * It provides a static registry for all entity types, including the player entity type.
+ */
 public class VOCoreEntityTypes {
     public static final Registry<VOEntityType<?, ?>> REGISTRY;
 

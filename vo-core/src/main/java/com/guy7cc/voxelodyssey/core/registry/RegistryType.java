@@ -20,6 +20,11 @@ package com.guy7cc.voxelodyssey.core.registry;
 
 import java.util.Objects;
 
+/**
+ * Represents a type of registry object with a unique key.
+ *
+ * @param <T> the type of the registry object
+ */
 public final class RegistryType<T> implements Keyed {
     private final Key key;
 

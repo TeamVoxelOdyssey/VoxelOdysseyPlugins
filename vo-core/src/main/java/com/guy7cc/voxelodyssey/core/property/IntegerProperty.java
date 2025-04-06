@@ -23,6 +23,11 @@ import com.google.gson.JsonPrimitive;
 import com.guy7cc.voxelodyssey.core.data.DataFormatException;
 import com.guy7cc.voxelodyssey.core.registry.Key;
 
+/**
+ * IntegerProperty is a class that represents an integer property.
+ * It extends the AbstractProperty class and provides methods to parse
+ * JSON elements to integers and vice versa.
+ */
 public class IntegerProperty extends AbstractProperty<Integer> {
     public IntegerProperty(Key key, Integer defaultValue) {
         super(key, defaultValue);

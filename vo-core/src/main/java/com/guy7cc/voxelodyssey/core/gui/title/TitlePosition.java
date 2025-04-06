@@ -18,6 +18,10 @@
  */
 package com.guy7cc.voxelodyssey.core.gui.title;
 
+/**
+ * Enum representing the position of a title.
+ * Currently, only the default position is defined.
+ */
 public enum TitlePosition {
     DEFAULT(0);
 
