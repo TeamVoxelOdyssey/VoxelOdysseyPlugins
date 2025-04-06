@@ -24,6 +24,12 @@ import com.guy7cc.voxelodyssey.core.registry.Key;
 import com.guy7cc.voxelodyssey.game.system.VOElementalVector;
 import com.guy7cc.voxelodyssey.game.system.VOElementalVectorProperty;
 
+/**
+ * A class that holds all the properties in the game.
+ * <p>
+ * This class is used to register and retrieve properties.
+ * </p>
+ */
 public class VOProperties {
     // EFFECT PROPERTY
     public static final Property<VOElementalVector> ELEMENT;

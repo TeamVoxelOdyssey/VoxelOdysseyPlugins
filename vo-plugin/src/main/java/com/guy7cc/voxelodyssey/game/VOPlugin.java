@@ -23,6 +23,11 @@ import com.guy7cc.voxelodyssey.game.registry.VORegistryTypes;
 import com.guy7cc.voxelodyssey.game.system.effect.VOEffects;
 import org.bukkit.plugin.java.JavaPlugin;
 
+/**
+ * Main class for the VoxelOdyssey plugin.
+ * This class is the entry point for the plugin and is responsible for loading
+ * and enabling the plugin.
+ */
 public final class VOPlugin extends JavaPlugin {
     private static VOPlugin plugin;
 

@@ -18,6 +18,9 @@
  */
 package com.guy7cc.voxelodyssey.game.system;
 
+/**
+ * An enum representing the different elements in VoxelOdyssey.
+ */
 public enum VOElement {
     BASE(0xFFFFFF),
     FLAME(0xFF5555),

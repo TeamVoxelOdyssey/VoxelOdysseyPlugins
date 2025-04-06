@@ -26,6 +26,11 @@ import com.guy7cc.voxelodyssey.game.system.VOElementalVector;
 
 import java.util.Optional;
 
+/**
+ * FieldDamage is a class that represents a field damage effect in the game.
+ * It extends the VOEffect class and implements the onTick method to apply damage
+ * to the receiver based on the elemental vector.
+ */
 public class FieldDamage extends VOEffect<VOElementalVector> {
     public FieldDamage(Key key) {
         super(key);

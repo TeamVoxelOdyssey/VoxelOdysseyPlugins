@@ -34,6 +34,12 @@ import org.bukkit.util.Transformation;
 import org.joml.AxisAngle4f;
 import org.joml.Vector3f;
 
+/**
+ * A class that represents a damage number entity in the game.
+ * <p>
+ * This class is used to create and manage damage number entities that are displayed in the game world.
+ * </p>
+ */
 public class VODamageNum implements VOEntity<TextDisplay> {
     private static final char BASE_ZERO = '\uE100';
 

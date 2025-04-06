@@ -22,6 +22,14 @@ import com.guy7cc.voxelodyssey.core.entity.VOEntity;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.entity.LivingEntity;
 
+/**
+ * An interface for entities that can take damage.
+ * <p>
+ * This interface is used to define the behavior of entities that can take damage.
+ * </p>
+ *
+ * @param <T> the type of the living entity
+ */
 public interface VODamageable<T extends LivingEntity> extends VOEntity<T> {
     double getHp();
 

@@ -28,6 +28,10 @@ import com.guy7cc.voxelodyssey.core.registry.Key;
 import org.bukkit.NamespacedKey;
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * Represents the state of a modifier in the game.
+ * It holds the properties of the modifier and its effect.
+ */
 public class VOModifierState extends AbstractState<VOEffect<?>, VOModifierState> implements Comparable<VOModifierState> {
     private VOEffect<?> effect;
 

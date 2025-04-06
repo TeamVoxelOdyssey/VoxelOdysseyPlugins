@@ -29,6 +29,12 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * A router for VOEffectPipeline.
+ * <p>
+ *     This class is used to route effects and modifiers to the correct pipeline.
+ * </p>
+ */
 public class VOEffectRouter implements Tickable, JsonSerializable<VOEffectRouter> {
     private final VOEffectApplicable<?> receiver;
     private final Map<VOEffect<?>, VOEffectPipeline<?>> router = new HashMap<>();
@@ -38,32 +44,65 @@ public class VOEffectRouter implements Tickable, JsonSerializable<VOEffectRouter
         initialize();
     }
 
+    /**
+     * Add an effect to the router.
+     *
+     * @param state the effect to add
+     */
     public void addEffect(VOEffectState state) {
         router.get(state.getOwner()).addEffect(state);
     }
 
+    /**
+     * Add a collection of effects to the router.
+     *
+     * @param collection the collection of effects to add
+     */
     public void addEffect(Collection<VOEffectState> collection) {
         collection.forEach(this::addEffect);
     }
 
+    /**
+     * Add a modifier to the router.
+     *
+     * @param state the modifier to add
+     */
     public void addModifier(VOModifierState state) {
         router.get(state.getOwner()).addModifier(state);
     }
 
+    /**
+     * Add a collection of modifiers to the router.
+     *
+     * @param collection the collection of modifiers to add
+     */
     public void addModifier(Collection<VOModifierState> collection) {
         collection.forEach(this::addModifier);
     }
 
+    /**
+     * Clear the modifier from the inventory item.
+     *
+     * @param slot the slot of the inventory item
+     */
     public void clearModifierFromInventory(int slot) {
         clearModifier(IndexedKey.fromInventory(slot));
     }
 
+    /**
+     * Clear the modifier from the source.
+     *
+     * @param source the source of the modifier
+     */
     public void clearModifier(IndexedKey source) {
         for (var pipeline : router.values()) {
             pipeline.clearModifierBySource(source);
         }
     }
 
+    /**
+     * Clear all modifiers from all pipelines.
+     */
     public void clearModifierAll() {
         for (var pipeline : router.values()) {
             pipeline.clearModifierAll();

@@ -27,6 +27,12 @@ import com.guy7cc.voxelodyssey.core.entity.player.NoOpVOPlayer;
 import com.guy7cc.voxelodyssey.core.entity.player.VOPlayer;
 import com.guy7cc.voxelodyssey.game.entity.player.VOPlayerImpl;
 
+/**
+ * A class that holds all the entity types in the game.
+ * <p>
+ *     This class is used to register and retrieve entity types.
+ * </p>
+ */
 public class VOEntityTypes {
     public static final VOEntityType<VOPlayer, VOPlayer.FactoryArgs> VOPLAYER;
     public static final VOEntityType<VODamageNum, VODamageNum.FactoryArgs> DAMAGE_NUM;

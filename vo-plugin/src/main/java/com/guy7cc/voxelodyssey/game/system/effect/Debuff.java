@@ -26,6 +26,12 @@ import net.kyori.adventure.text.Component;
 import java.util.Comparator;
 import java.util.Optional;
 
+/**
+ * Represents a debuff effect that can be applied to an entity.
+ * <p>
+ * This class is used to create debuff effects that can be applied to entities.
+ * </p>
+ */
 public class Debuff extends VOEffect<ImmutableValueHolder<Double>> {
     private final Component component;
 
