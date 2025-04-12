@@ -18,8 +18,11 @@
  */
 package com.guy7cc.voxelodyssey.dev.command;
 
+import com.guy7cc.voxelodyssey.core.VoxelOdysseyCore;
 import com.guy7cc.voxelodyssey.core.command.CommandDescriptor;
 import com.guy7cc.voxelodyssey.dev.VoxelOdysseyDeveloperTools;
+import com.guy7cc.voxelodyssey.dev.banner.BannerFactory;
+import com.guy7cc.voxelodyssey.dev.banner.Banners;
 import com.guy7cc.voxelodyssey.dev.landmark.Landmark;
 import com.guy7cc.voxelodyssey.dev.landmark.LandmarkManager;
 import com.guy7cc.voxelodyssey.dev.tool.impl.*;
@@ -28,16 +31,19 @@ import com.guy7cc.voxelodyssey.core.command.CommandArg;
 import com.guy7cc.voxelodyssey.core.command.CommandComposition;
 import com.guy7cc.voxelodyssey.dev.tool.*;
 import com.guy7cc.voxelodyssey.dev.tool.weight.GaussianDistribution;
-import com.guy7cc.voxelodyssey.dev.landmark.Landmarks;
+import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import org.bukkit.generator.WorldInfo;
+import org.bukkit.inventory.ItemStack;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 /**
  * A command that provides various developer tools and utilities.
@@ -46,12 +52,13 @@ import java.util.Set;
  * </p>
  */
 public class VODevCommand implements CommandDescriptor {
-    private final CommandComposition composition = new CommandComposition()
+    public static final CommandComposition composition = new CommandComposition()
             .add(
                     (args, sender) -> {
                         if (sender instanceof Player player) {
+                            LandmarkManager lm = VoxelOdysseyDeveloperTools.getLandmarkManager();
                             String landmark = (String) args.get("landmark");
-                            Location loc = Landmarks.get(landmark);
+                            Location loc = lm.get(landmark).toLocation();
                             player.teleport(loc);
                             return true;
                         }
@@ -78,7 +85,7 @@ public class VODevCommand implements CommandDescriptor {
                     CommandArg.literal("base", "landmark"),
                     CommandArg.literal("op", "add"),
                     CommandArg.literal("name"),
-                    CommandArg.literal("world"),
+                    CommandArg.literal("world", Bukkit.getWorlds().stream().map(WorldInfo::getName).collect(Collectors.toSet())),
                     CommandArg.rangedDouble("x", -1E6, 1E6),
                     CommandArg.rangedDouble("y", -1E6, 1E6),
                     CommandArg.rangedDouble("z", -1E6, 1E6),
@@ -183,6 +190,29 @@ public class VODevCommand implements CommandDescriptor {
                     CommandArg.literal("base", "tool"),
                     CommandArg.literal("toolName", "fill_blank"),
                     CommandArg.rangedInt("size", 1, 256)
+            ).add(
+                    (args, sender) -> {
+                        if (sender instanceof Player player) {
+                            ItemStack helmet = player.getInventory().getHelmet();
+                            ItemStack mainHand = player.getInventory().getItemInMainHand();
+                            player.getInventory().setHelmet(mainHand);
+                            player.getInventory().setItemInMainHand(helmet);
+                            return true;
+                        }
+                        return false;
+                    },
+                    CommandArg.literal("base", "hat")
+            ).add(
+                    (args, sender) -> {
+                        if(sender instanceof Player player){
+                            BannerFactory factory = ((BannerFactory) args.get("banner"));
+                            player.getInventory().addItem(factory.supply());
+                            return true;
+                        }
+                        return false;
+                    },
+                    CommandArg.literal("base", "banner"),
+                    CommandArg.registry("banner", Banners.REGISTRY, VoxelOdysseyCore.NAMESPACE)
             );
 
     @Override
@@ -200,7 +230,7 @@ public class VODevCommand implements CommandDescriptor {
         return composition.onTabComplete(commandSender, command, s, args);
     }
 
-    private void setTerrainOrganizer(Player player, Tool organizer) {
+    private static void setTerrainOrganizer(Player player, Tool organizer) {
         VoxelOdysseyDeveloperTools.getToolManager().set(player, player.getInventory().getItemInMainHand().getType(), organizer);
     }
 }
