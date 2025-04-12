@@ -28,6 +28,10 @@ import java.util.List;
 import java.util.Set;
 
 public class TerrainUtil {
+    public static boolean isAir(BlockType type){
+        return type == BlockTypes.AIR || type == BlockTypes.VOID_AIR || type == BlockTypes.CAVE_AIR;
+    }
+
     public static void replace(EditSession session, BlockVector3 pos, BlockType type, Set<BlockType> target) throws MaxChangedBlocksException {
         if (target.contains(session.getBlock(pos).getBlockType())) {
             session.setBlock(pos, type.getDefaultState());
