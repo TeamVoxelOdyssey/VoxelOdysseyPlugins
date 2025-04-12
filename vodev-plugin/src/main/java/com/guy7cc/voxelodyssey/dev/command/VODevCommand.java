@@ -25,7 +25,9 @@ import com.guy7cc.voxelodyssey.dev.banner.BannerFactory;
 import com.guy7cc.voxelodyssey.dev.banner.Banners;
 import com.guy7cc.voxelodyssey.dev.landmark.Landmark;
 import com.guy7cc.voxelodyssey.dev.landmark.LandmarkManager;
+import com.guy7cc.voxelodyssey.dev.terrain.TerrainManager;
 import com.guy7cc.voxelodyssey.dev.tool.impl.*;
+import com.sk89q.worldedit.world.block.BlockState;
 import com.sk89q.worldedit.world.block.BlockType;
 import com.guy7cc.voxelodyssey.core.command.CommandArg;
 import com.guy7cc.voxelodyssey.core.command.CommandComposition;
@@ -135,9 +137,10 @@ public class VODevCommand implements CommandDescriptor {
             ).add(
                     (args, sender) -> {
                         if (sender instanceof Player player) {
+                            TerrainManager tm = VoxelOdysseyDeveloperTools.getTerrainManager();
                             int size = (int) args.get("size");
                             String name = (String) args.get("preset");
-                            List<BlockType> preset = TerrainPresets.get(name);
+                            List<BlockType> preset = tm.get(name);
                             setTerrainOrganizer(player, new Terrain(size, preset));
                             player.sendMessage(String.format("地形生成ツールを設定しました。（%sプリセット）", name));
                             return true;
@@ -146,14 +149,15 @@ public class VODevCommand implements CommandDescriptor {
                     },
                     CommandArg.literal("base", Set.of("tool")),
                     CommandArg.literal("toolName", Set.of("terrain")),
-                    CommandArg.literal("preset", TerrainPresets.names()),
+                    CommandArg.literal("preset", VoxelOdysseyDeveloperTools.getTerrainManager()::keySet),
                     CommandArg.rangedInt("size", 1, 16)
             ).add(
                     (args, sender) -> {
                         if (sender instanceof Player player) {
+                            TerrainManager tm = VoxelOdysseyDeveloperTools.getTerrainManager();
                             int size = (int) args.get("size");
                             String name = (String) args.get("preset");
-                            List<BlockType> preset = TerrainPresets.get(name);
+                            List<BlockType> preset = tm.get(name);
                             setTerrainOrganizer(player, new TerrainNoDestruction(size, preset));
                             player.sendMessage(String.format("地形生成ツール（非破壊）を設定しました。（%sプリセット）", name));
                             return true;
@@ -162,7 +166,7 @@ public class VODevCommand implements CommandDescriptor {
                     },
                     CommandArg.literal("base", Set.of("tool")),
                     CommandArg.literal("toolName", Set.of("terrain_ndt")),
-                    CommandArg.literal("preset", TerrainPresets.names()),
+                    CommandArg.literal("preset", VoxelOdysseyDeveloperTools.getTerrainManager()::keySet),
                     CommandArg.rangedInt("size", 1, 16)
             ).add(
                     (args, sender) -> {
@@ -213,6 +217,34 @@ public class VODevCommand implements CommandDescriptor {
                     },
                     CommandArg.literal("base", "banner"),
                     CommandArg.registry("banner", Banners.REGISTRY, VoxelOdysseyCore.NAMESPACE)
+            ).add(
+                    (args, sender) -> {
+                        if(sender instanceof Player player){
+                            TerrainManager tm = VoxelOdysseyDeveloperTools.getTerrainManager();
+                            String name = (String) args.get("name");
+                            tm.registerTerrainFromSelection(player, (String) args.get("name"));
+                            player.sendMessage("地層" + name + "を追加しました。");
+                            return true;
+                        }
+                        return false;
+                    },
+                    CommandArg.literal("base", "terrain"),
+                    CommandArg.literal("op", "add"),
+                    CommandArg.literal("name")
+            ).add(
+                    (args, sender) -> {
+                        if(sender instanceof Player player){
+                            TerrainManager tm = VoxelOdysseyDeveloperTools.getTerrainManager();
+                            String name = (String) args.get("name");
+                            tm.remove(name);
+                            player.sendMessage("地層" + name + "を削除しました。");
+                            return true;
+                        }
+                        return false;
+                    },
+                    CommandArg.literal("base", "terrain"),
+                    CommandArg.literal("op", "remove"),
+                    CommandArg.literal("name", VoxelOdysseyDeveloperTools.getTerrainManager()::keySet)
             );
 
     @Override

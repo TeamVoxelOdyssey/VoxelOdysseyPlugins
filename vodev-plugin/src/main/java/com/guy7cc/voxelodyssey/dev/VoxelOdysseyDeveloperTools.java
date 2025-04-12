@@ -30,6 +30,7 @@ import com.guy7cc.voxelodyssey.dev.banner.Banners;
 import com.guy7cc.voxelodyssey.dev.command.VODevCommand;
 import com.guy7cc.voxelodyssey.dev.landmark.LandmarkManager;
 import com.guy7cc.voxelodyssey.dev.registry.VODevRegistryTypes;
+import com.guy7cc.voxelodyssey.dev.terrain.TerrainManager;
 import com.guy7cc.voxelodyssey.dev.tool.ToolManager;
 
 import java.io.File;
@@ -54,6 +55,7 @@ public class VoxelOdysseyDeveloperTools {
 
     private static RegistryManager.Registrar registrar;
     private static CommandManager commandManager;
+    private static TerrainManager terrainManager;
     private static LandmarkManager landmarkManager;
     private static ToolManager toolManager;
 
@@ -74,9 +76,10 @@ public class VoxelOdysseyDeveloperTools {
         registrar = VoxelOdysseyCore.getRegistryManager().new Registrar(Map.of(
                 VODevRegistryTypes.BANNER, Banners.REGISTRY
         ));
-        commandManager = new CommandManager(plugin, new VODevCommand());
+        terrainManager = new TerrainManager();
         landmarkManager = new LandmarkManager(plugin);
         toolManager = new ToolManager();
+        commandManager = new CommandManager(plugin, new VODevCommand());
         dataLoader = new DataLoader(plugin, new File(plugin.getDataFolder(), "vodevdat.json"), json, DATA_VERSION);
 
         dataLoader.collectStaticHolders(VoxelOdysseyDeveloperTools.class);
@@ -95,6 +98,10 @@ public class VoxelOdysseyDeveloperTools {
 
     public static GeneralTicker getTicker(){
         return ticker;
+    }
+
+    public static TerrainManager getTerrainManager(){
+        return terrainManager;
     }
 
     public static LandmarkManager getLandmarkManager(){

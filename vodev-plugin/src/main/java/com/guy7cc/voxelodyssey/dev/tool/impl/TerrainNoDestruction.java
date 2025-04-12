@@ -25,6 +25,7 @@ import com.sk89q.worldedit.MaxChangedBlocksException;
 import com.sk89q.worldedit.WorldEdit;
 import com.sk89q.worldedit.bukkit.BukkitAdapter;
 import com.sk89q.worldedit.math.BlockVector3;
+import com.sk89q.worldedit.world.block.BlockState;
 import com.sk89q.worldedit.world.block.BlockType;
 import com.guy7cc.voxelodyssey.dev.util.TerrainUtil;
 import com.sk89q.worldedit.world.block.BlockTypes;
@@ -62,19 +63,16 @@ public class TerrainNoDestruction extends Tool {
                 for (int x = -r; x <= r; x++) {
                     for (int z = -r; z <= r; z++) {
                         if (x * x + z * z > r * r) continue;
-                        Set<BlockType> strongTarget = new HashSet<>(preset);
-                        strongTarget.remove(BlockTypes.AIR);
-
                         BlockVector3 top = targetPos.add(x, 0, z);
-                        while (strongTarget.contains(session.getBlock(top).getBlockType())) {
+                        while (!TerrainUtil.isAir(session.getBlock(top).getBlockType())) {
                             top = top.add(0, 1, 0);
                         }
                         top = top.add(0, -1, 0);
-                        if (!strongTarget.contains(session.getBlock(top).getBlockType())) continue;
+                        if (TerrainUtil.isAir(session.getBlock(top).getBlockType())) continue;
                         int i = 0;
 
-                        while (strongTarget.contains(session.getBlock(top).getBlockType())) {
-                            TerrainUtil.replace(session, top, preset.get(Math.min(i, preset.size() - 1)), strongTarget);
+                        while (!TerrainUtil.isAir(session.getBlock(top).getBlockType())) {
+                            session.setBlock(top, preset.get(Math.min(i, preset.size() - 1)).getDefaultState());
                             top = top.add(0, -1, 0);
                             i++;
                         }
