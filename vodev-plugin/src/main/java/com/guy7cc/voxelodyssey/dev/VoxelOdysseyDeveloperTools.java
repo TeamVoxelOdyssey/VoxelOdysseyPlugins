@@ -27,9 +27,7 @@ import com.guy7cc.voxelodyssey.core.data.DataLoader;
 import com.guy7cc.voxelodyssey.core.data.JsonFileIO;
 import com.guy7cc.voxelodyssey.core.registry.RegistryManager;
 import com.guy7cc.voxelodyssey.dev.banner.Banners;
-import com.guy7cc.voxelodyssey.dev.command.VODevBannerCommand;
 import com.guy7cc.voxelodyssey.dev.command.VODevCommand;
-import com.guy7cc.voxelodyssey.dev.command.VODevHatCommand;
 import com.guy7cc.voxelodyssey.dev.landmark.LandmarkManager;
 import com.guy7cc.voxelodyssey.dev.registry.VODevRegistryTypes;
 import com.guy7cc.voxelodyssey.dev.tool.ToolManager;
@@ -76,7 +74,7 @@ public class VoxelOdysseyDeveloperTools {
         registrar = VoxelOdysseyCore.getRegistryManager().new Registrar(Map.of(
                 VODevRegistryTypes.BANNER, Banners.REGISTRY
         ));
-        commandManager = new CommandManager(plugin, new VODevCommand(), new VODevHatCommand(), new VODevBannerCommand());
+        commandManager = new CommandManager(plugin, new VODevCommand());
         landmarkManager = new LandmarkManager(plugin);
         toolManager = new ToolManager();
         dataLoader = new DataLoader(plugin, new File(plugin.getDataFolder(), "vodevdat.json"), json, DATA_VERSION);

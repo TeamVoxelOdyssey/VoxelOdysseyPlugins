@@ -54,6 +54,10 @@ public class LandmarkManager implements DataHolder {
         return map.put(name, landmark);
     }
 
+    public Landmark get(String name){
+        return map.get(name);
+    }
+
     public Landmark remove(String name){
         return map.remove(name);
     }
