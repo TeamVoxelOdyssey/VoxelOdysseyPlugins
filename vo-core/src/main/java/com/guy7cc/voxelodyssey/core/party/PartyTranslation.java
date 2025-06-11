@@ -1,0 +1,39 @@
+/*
+ * Copyright (C) 2025 TeamVoxelOdyssey
+ *
+ * This file is part of VoxelOdysseyPlugins.
+ *
+ * VoxelOdysseyPlugins is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * VoxelOdysseyPlugins is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with VoxelOdysseyPlugins. If not, see <https://www.gnu.org/licenses/>.
+ */
+package com.guy7cc.voxelodyssey.core.party;
+
+import net.kyori.adventure.key.Key;
+import net.kyori.adventure.translation.GlobalTranslator;
+import net.kyori.adventure.translation.TranslationStore;
+import net.kyori.adventure.util.UTF8ResourceBundleControl;
+
+import java.text.MessageFormat;
+import java.util.Locale;
+import java.util.ResourceBundle;
+
+public class PartyTranslation {
+    public static void register(){
+        TranslationStore.StringBased<MessageFormat> store = TranslationStore.messageFormat(Key.key("voxelodyssey:party"));
+        ResourceBundle bundleUS = ResourceBundle.getBundle("com.guy7cc.voxelodyssey.core.party.Lang", Locale.US, UTF8ResourceBundleControl.get());
+        ResourceBundle bundleJP = ResourceBundle.getBundle("com.guy7cc.voxelodyssey.core.party.Lang", Locale.JAPAN, UTF8ResourceBundleControl.get());
+        store.registerAll(Locale.US, bundleUS, true);
+        store.registerAll(Locale.JAPAN, bundleJP, true);
+        GlobalTranslator.translator().addSource(store);
+    }
+}

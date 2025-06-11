@@ -52,7 +52,9 @@ public final class Key implements Copyable<Key>, JsonSerializable<Key> {
     }
 
     public static Key fromString(String s){
-        return new Key(NamespacedKey.fromString(s));
+        NamespacedKey handle = NamespacedKey.fromString(s);
+        if(handle == null) throw new IllegalArgumentException(s + " is not valid string for key.");
+        return new Key(handle);
     }
 
     public static Key vo(String key){
