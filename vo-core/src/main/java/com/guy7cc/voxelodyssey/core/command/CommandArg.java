@@ -19,8 +19,10 @@
 package com.guy7cc.voxelodyssey.core.command;
 
 import com.guy7cc.voxelodyssey.core.item.VOItem;
+import com.guy7cc.voxelodyssey.core.party.PartyManager;
 import com.guy7cc.voxelodyssey.core.registry.Registry;
 import com.guy7cc.voxelodyssey.core.registry.RegistryObject;
+import org.bukkit.entity.Player;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
@@ -99,6 +101,10 @@ public interface CommandArg<T> {
 
     static CommandArg<Double> rangedDouble(String name, double min, double max) {
         return new RangedDoubleArg(name, min, max);
+    }
+
+    static CommandArg<Player> player(String name){
+        return new PlayerArg(name);
     }
 
     static CommandArg<VOItem> voitem(String name){

@@ -19,6 +19,7 @@
 package com.guy7cc.voxelodyssey.core;
 
 import com.guy7cc.voxelodyssey.core.command.CommandManager;
+import com.guy7cc.voxelodyssey.core.command.PartyCommand;
 import com.guy7cc.voxelodyssey.core.command.VOItemCommand;
 import com.guy7cc.voxelodyssey.core.common.GeneralEventHandler;
 import com.guy7cc.voxelodyssey.core.common.GeneralPluginLifecycleHandler;
@@ -28,6 +29,8 @@ import com.guy7cc.voxelodyssey.core.data.JsonFileIO;
 import com.guy7cc.voxelodyssey.core.data.DataLoader;
 import com.guy7cc.voxelodyssey.core.entity.*;
 import com.guy7cc.voxelodyssey.core.entity.player.VOPlayer;
+import com.guy7cc.voxelodyssey.core.party.PartyManager;
+import com.guy7cc.voxelodyssey.core.party.PartyTranslation;
 import com.guy7cc.voxelodyssey.core.region.RegionManager;
 import com.guy7cc.voxelodyssey.core.registry.*;
 import org.bukkit.entity.Entity;
@@ -54,6 +57,7 @@ public final class VoxelOdysseyCore {
     private static GeneralTicker ticker;
 
     private static RegistryManager registryManager;
+    private static PartyManager partyManager;
     private static CommandManager command;
     private static ScoreboardContainer sbContainer;
     private static VOEntityManager eManager;
@@ -73,6 +77,7 @@ public final class VoxelOdysseyCore {
         ticker = new GeneralTicker(plugin);
 
         registryManager = new RegistryManager(plugin);
+        partyManager = new PartyManager();
         command = new CommandManager(plugin, new VOItemCommand());
         sbContainer = new ScoreboardContainer(plugin);
         eManager = new VOEntityManager(plugin);
@@ -83,6 +88,10 @@ public final class VoxelOdysseyCore {
         lifecycleHandler.collectStatic(VoxelOdysseyCore.class);
         eventHandler.collectStatic(VoxelOdysseyCore.class);
         ticker.collectStatic(VoxelOdysseyCore.class);
+
+        PartyCommand.register(plugin);
+
+        PartyTranslation.register();
     }
 
     public static GeneralPluginLifecycleHandler getLifecycleHandler(){
@@ -131,5 +140,9 @@ public final class VoxelOdysseyCore {
 
     public static <T extends RegistryObject> Registry<T> getRegistry(RegistryType<T> type){
         return VoxelOdysseyCore.registryManager.get(type);
+    }
+
+    public static PartyManager getPartyManager(){
+        return partyManager;
     }
 }
